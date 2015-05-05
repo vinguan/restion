@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Restion.Interfaces
 {
-    public interface IJsonSerializer<T>
+    public interface IJsonSerializer
     {
-        void Serialize(T obj);
-        T Deserialize();
+        string Serialize<T>(T obj);
+        T Deserialize<T>(string json);
     }
 }
