@@ -14,6 +14,12 @@ namespace Restion.Interfaces
 
         T Deserialize<T>(string json);
 
+        /// <summary>
+        /// Deserializes type async based on the given Json
+        /// </summary>
+        /// <typeparam name="T">Type to be deserialized</typeparam>
+        /// <param name="json">Json string</param>
+        /// <returns></returns>
         Task<T> DeserializeAsync<T>(string json);
     }
 }
