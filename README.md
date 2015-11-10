@@ -40,13 +40,13 @@ IRestionClient restionClient = new RestionClient()
 
 ```
 # Getting Started
-1. Creating IRestionClient 
+* Creating IRestionClient 
 By default it uses [Json.NET](http://www.newtonsoft.com/json) for Serialization and Deserialization
 ```csharp
 IRestionClient restionClient = new RestionClient()
                                    .SetBaseAddress("http://foo.bar.com");
 ```
-2. Creating the IRestionRequest
+* Creating the IRestionRequest
 ```csharp
 IRestionRequest restionRequest = new RestionRequest("/foo/")
                                      .WithHttpMethod(HttpMethod.Post)
@@ -54,7 +54,7 @@ IRestionRequest restionRequest = new RestionRequest("/foo/")
                                      .WithContentMediaType(MediaTypes.ApplicationJson)
                                      .WithContentEnconding(Encoding.UTF8);
 ```
-3. Executing the Request
+* Executing the Request
 It returns and instance of IRestionRequest<TContent>
 ```csharp
 var response = await restionClient.ExecuteRequestAsync<IRestionRequest, 
