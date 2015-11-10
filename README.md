@@ -1,7 +1,9 @@
 # Restion
 I like to call it an unifier of kingdoms portable class library for calling RESTful services in .NET. 
-It unifies the fluent interface kingdon with HttpClient and make http request from PCL a lot more easier.
-Written by [Vinicius Gualberto] (vinguan.brandedme.com) and licensed under [Apache 2](http://www.apache.org/licenses/LICENSE-2.0.html).
+It unifies the fluent interface kingdom with HttpClient and make http request from PCL a lot more easier.
+
+##Compability
+Compiled to Profile 344 of PCL which includes the plataforms .NET 4.5, Silverlight 5, Windows Phone 8.x, Windows 8.x. It can be used also on iOS and Android through [Xamarin](http://xamarin.com).
 
 #Nuget
 ```
@@ -60,8 +62,10 @@ var response = await restionClient.ExecuteRequestAsync<IRestionRequest,
                                                       RestionResponse<Foo>>(restionRequest);
 ```
 
+# Author
+Vinicius Gualberto [@Vinguan](http://twitter.com/vinguan).
+
 # Contribute
 Fork me and send the pull requests =).
 
-# Doubts,Sugestions or other stuff
-Contact me on twitter [@Vinguan](http://twitter.com/vinguan)
+
