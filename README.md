@@ -24,9 +24,7 @@ IRestionRequest restionRequest = new RestionRequest("/foo/")
 ```
 * Full Asynchronously
 ``` csharp
-var response = await restionClient.ExecuteRequestAsync<IRestionRequest, 
-                                                      Foo, 
-                                                      RestionResponse<Foo>>(restionRequest);
+IRestionResponse<Foo> response = await restionClient.ExecuteRequestAsync<Foo>(restionRequest);
 ```
 * Full Extendable
 ```csharp
@@ -57,9 +55,7 @@ IRestionRequest restionRequest = new RestionRequest("/foo/")
 * Executing the Request
 It returns and instance of IRestionRequest<TContent>
 ```csharp
-var response = await restionClient.ExecuteRequestAsync<IRestionRequest, 
-                                                      Foo, 
-                                                      RestionResponse<Foo>>(restionRequest);
+IRestionResponse<Foo> response = await restionClient.ExecuteRequestAsync<Foo>(restionRequest);
 ```
 
 # Author
