@@ -3,7 +3,7 @@ I like to call it an unifier of kingdoms portable class library for calling REST
 It unifies the fluent interface kingdom with HttpClient and make http request from PCL a lot more easier.
 
 ##Compability
-Compiled to Profile 344 of PCL which includes the plataforms .NET 4.5, Silverlight 5, Windows Phone 8.x, Windows 8.x. It can be used also on iOS and Android through [Xamarin](http://xamarin.com).
+Compiled to Profile 344 of PCL which includes the plataforms .NET 4.5, Silverlight 5, Windows Phone 8.x, Windows 8.x. It can be used also on iOS and Android with [Xamarin](http://xamarin.com).
 
 #Nuget
 ```
