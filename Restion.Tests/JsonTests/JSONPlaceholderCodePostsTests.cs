@@ -24,7 +24,7 @@ namespace Restion.Tests.JsonTests
 
                 var restionRequest = new RestionRequest("/posts/");
 
-                var response = await restionClient.ExecuteRequestAsync<IRestionRequest, List<Post>, RestionResponse<List<Post>>>(restionRequest);
+                var response = await restionClient.ExecuteRequestAsync<List<Post>>(restionRequest);
 
                 if (response != null)
                 {
@@ -56,7 +56,7 @@ namespace Restion.Tests.JsonTests
 
                 var restionRequest = new RestionRequest("/posts/1");
 
-                var response = await restionClient.ExecuteRequestAsync<RestionRequest, Post, RestionResponse<Post>>(restionRequest);
+                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -97,9 +97,7 @@ namespace Restion.Tests.JsonTests
                                          .WithContentMediaType(MediaTypes.ApplicationJson)
                                          .WithContentEnconding(Encoding.UTF8);
 
-                var response = await restionClient.ExecuteRequestAsync<IRestionRequest, 
-                                                                       Post, 
-                                                                       RestionResponse<Post>>(restionRequest);
+                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -140,7 +138,7 @@ namespace Restion.Tests.JsonTests
                                          .WithContentMediaType(MediaTypes.ApplicationJson)
                                          .WithContentEnconding(Encoding.UTF8);
 
-                var response = await restionClient.ExecuteRequestAsync<IRestionRequest, Post, RestionResponse<Post>>(restionRequest);
+                IRestionResponse<Post> response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -173,7 +171,7 @@ namespace Restion.Tests.JsonTests
                 var restionRequest = new RestionRequest("/posts/1")
                                         .WithHttpMethod(HttpMethod.Delete);
 
-                var response = await restionClient.ExecuteRequestAsync<IRestionRequest, Post, RestionResponse<Post>>(restionRequest);
+                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {

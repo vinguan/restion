@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Restion.Deserialization
 {
@@ -29,7 +30,7 @@ namespace Restion.Deserialization
         {
             return Task.Factory.StartNew(() =>
             {
-                var xmlDeserializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+                var xmlDeserializer = new XmlSerializer(typeof(T));
 
                 using (var stringReader = new StringReader(value))
                 {

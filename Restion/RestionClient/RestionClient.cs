@@ -46,15 +46,9 @@ namespace Restion
 
         #endregion Public Properties
 
-        #region Protected Properties
-        #endregion Protected Properties
-
-        #region Private Properties
-        #endregion Private Properties
-
         #region Public Constructors
         /// <summary>
-        /// /
+        /// Default constructor for RestionClient
         /// </summary>
         /// <param name="serializer"></param>
         /// <param name="deSerialiazer"></param>
@@ -68,28 +62,24 @@ namespace Restion
             RestionClientOptions = new RestionClientOptions();
         }
 
+        /// <summary>
+        /// Default constructor for RestionClient with inicialization of Dictionaries
+        /// </summary>
+        /// <param name="serializer"></param>
+        /// <param name="deSerialiazer"></param>
         public RestionClient(ISerialiazer serializer, IDeserialiazer deSerialiazer) : this(serializer,deSerialiazer, new Dictionary<string, string>())
         {
 
         }
 
+        /// <summary>
+        /// Default constructor for RestionClient with JsonNet and inicialization of Dictionaries
+        /// </summary>
         public RestionClient() : this(new JsonNetSerializer(), new JsonNetDeserializer(), new Dictionary<string, string>())
         {
 
         }
-
-
         #endregion Public Constructors
-
-        #region Private Constructors
-
-        #endregion Private Constructors
-
-        #region Private Methods
-        #endregion Private Methods
-
-        #region Protected Methods
-        #endregion Protected Methods
 
         #region Public Methods
 
@@ -165,15 +155,10 @@ namespace Restion
         /// <summary>
         /// Execute asynchronously a <see cref="IRestionRequest"/> 
         /// </summary>
-        /// <typeparam name="TRestionRequest"><see cref="IRestionRequest"/> to be sent</typeparam>
         /// <typeparam name="TResponseContent">Content of the response</typeparam>
-        /// <typeparam name="TRestionResponse"><see cref="IRestionResponse{TResponseContent}"/> of the request</typeparam>
         /// <param name="restionRequest">The RestionRequest to be sent</param>
         /// <returns><see cref="IRestionResponse{TResponseContent}"/> of the request</returns>
-        public async Task<TRestionResponse> ExecuteRequestAsync<TRestionRequest, TResponseContent, TRestionResponse>(TRestionRequest restionRequest)
-                                                                where TRestionRequest : IRestionRequest
-                                                                where TResponseContent : class
-                                                                where TRestionResponse : IRestionResponse<TResponseContent>, new()
+        public async Task<IRestionResponse<TResponseContent>> ExecuteRequestAsync<TResponseContent>(IRestionRequest restionRequest) where TResponseContent : class
         {
 
             if(restionRequest == null)
@@ -185,7 +170,7 @@ namespace Restion
             if (Deserialiazer == null)
                 throw new Exception("DeSerializer is not defined");
 
-            var restionResponse = new TRestionResponse();
+            var restionResponse = new RestionResponse<TResponseContent>();
 
             try
             {
@@ -254,13 +239,5 @@ namespace Restion
         }
 
         #endregion Public Methods
-
-        #region IDisposable
-        #endregion IDisposable
-
-        #region Destructor
-
-        #endregion Destructor
-
     }
 }

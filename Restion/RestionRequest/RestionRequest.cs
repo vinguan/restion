@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +39,9 @@ namespace Restion
         /// </summary>
         private Encoding _encoding;
 
+        /// <summary>
+        /// Media-Type for the request
+        /// </summary>
         private string _mediaType;
 
         #endregion Fields
@@ -242,24 +244,37 @@ namespace Restion
         /// </summary>
         public void Dispose()
         {
-            _parameters = null;
+            Dispose(true);
 
-            _headers = null;
-
-            _url = null;
-
-            _encoding = null;
-
-            _mediaType = null;
-
-            Method = null;
-
-            Serialiazer = null;
-
-            BaseUrl = null;
+            GC.SuppressFinalize(this);
         }
 
-        
+        /// <summary>
+        /// Dispose for derived classes
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _parameters = null;
+
+                _headers = null;
+
+                _url = null;
+
+                _encoding = null;
+
+                _mediaType = null;
+
+                Method = null;
+
+                Serialiazer = null;
+
+                BaseUrl = null;
+            }
+        }
+
         #endregion IDisposable
     }
 }

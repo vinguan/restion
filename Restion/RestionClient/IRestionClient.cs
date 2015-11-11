@@ -1,4 +1,3 @@
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -74,16 +73,11 @@ namespace Restion
         /// <summary>
         /// Execute asynchronously a <see cref="IRestionRequest"/> 
         /// </summary>
-        /// <typeparam name="TRestionRequest"><see cref="IRestionRequest"/> to be sent</typeparam>
         /// <typeparam name="TResponseContent">Content of the response</typeparam>
-        /// <typeparam name="TRestionResponse"><see cref="IRestionResponse{TResponseContent}"/> of the request</typeparam>
         /// <param name="restionRequest">The RestionRequest to be sent</param>
         /// <returns><see cref="IRestionResponse{TResponseContent}"/> of the request</returns>
-        Task<TRestionResponse> ExecuteRequestAsync<TRestionRequest, TResponseContent, TRestionResponse>(
-            TRestionRequest restionRequest)
-            where TRestionRequest : IRestionRequest
-            where TResponseContent : class
-            where TRestionResponse : IRestionResponse<TResponseContent>, new();
+        Task<IRestionResponse<TResponseContent>> ExecuteRequestAsync<TResponseContent>(IRestionRequest restionRequest)
+            where TResponseContent : class;
 
         #endregion Methods
     }

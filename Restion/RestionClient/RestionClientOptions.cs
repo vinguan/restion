@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Restion
+﻿namespace Restion
 {
     /// <summary>
     /// Represents the options of the <see cref="IRestionClient"/>

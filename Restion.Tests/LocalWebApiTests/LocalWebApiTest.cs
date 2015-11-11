@@ -25,7 +25,7 @@ namespace Restion.Tests.LocalWebApiTests
                                           .AddParameter("Name","123")
                                           .AddParameter("DateOfBirth",DateTime.Now.ToShortDateString());
 
-                var response = await restionClient.ExecuteRequestAsync<IRestionRequest, Customer, RestionResponse<Customer>>(restionRequest);
+                var response = await restionClient.ExecuteRequestAsync<Customer>(restionRequest);
 
                 if (response != null)
                 {
@@ -37,6 +37,10 @@ namespace Restion.Tests.LocalWebApiTests
                     {
                         response.Content.Should().NotBeNull();
                     }
+                }
+                else
+                {
+                    Assert.Fail();
                 }
 
             }
