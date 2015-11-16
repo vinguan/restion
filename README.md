@@ -1,4 +1,6 @@
 # Restion
+
+[![Join the chat at https://gitter.im/vinguan/Restion](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vinguan/Restion?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 I like to call it an unifier of kingdoms portable class library for calling RESTful services in .NET. 
 It unifies the fluent interface kingdom with HttpClient and make http request from PCL a lot more easier.
 
