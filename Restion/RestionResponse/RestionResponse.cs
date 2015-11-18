@@ -4,7 +4,11 @@ using System.Net.Http;
 
 namespace Restion
 {
-    public class RestionResponse<TContent> : IRestionResponse<TContent> where TContent : class
+    /// <summary>
+    /// Default implementation of <see cref="IRestionResponse{TContent}"/>
+    /// </summary>
+    /// <typeparam name="TContent"></typeparam>
+    public class RestionResponse<TContent> : IRestionResponse<TContent> where TContent : class 
     {
         #region Public Properties
 

@@ -8,7 +8,7 @@ namespace Restion
     /// Represents the contracts for a response of a <see cref="IRestionRequest"/>
     /// </summary>
     /// <typeparam name="TContent">Type of the content of the response</typeparam>
-    public interface IRestionResponse<TContent> where TContent : class
+    public interface IRestionResponse<TContent>
     {
         #region Properties
 

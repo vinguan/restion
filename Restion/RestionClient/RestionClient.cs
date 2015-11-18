@@ -140,7 +140,7 @@ namespace Restion
         }
 
         /// <summary>
-        /// Adds a default heards that will be sent on every request
+        /// Adds a default header that will be sent on every request
         /// </summary>
         /// <param name="headerKey"><see cref="string"/> with the header key</param>
         /// <param name="headerValue"><see cref="string"/> with the header value</param>

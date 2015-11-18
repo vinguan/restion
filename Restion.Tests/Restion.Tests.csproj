@@ -64,6 +64,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="LocalWebApiTests\BolleanResponse.cs" />
     <Compile Include="LocalWebApiTests\Customer.cs" />
     <Compile Include="LocalWebApiTests\LocalWebApiTest.cs" />
     <Compile Include="Models\Post.cs" />

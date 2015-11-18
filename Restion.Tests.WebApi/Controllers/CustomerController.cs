@@ -21,7 +21,6 @@ namespace Restion.Tests.WebApi.Controllers
         //    return "value";
         //}
 
-
         public Customer Get([FromUri] Customer customer)
         {
             return new Customer()
