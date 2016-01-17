@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using FluentAssertions.Primitives;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Restion.Tests.Models;
 
 namespace Restion.Tests.LocalWebApiTests
 {
@@ -20,9 +15,9 @@ namespace Restion.Tests.LocalWebApiTests
             try
             {
                 IRestionClient restionClient = new RestionClient()
-                    .SetBaseAddress("http://localhost/Restion.Tests.WebApi/api");
+                                                .SetBaseAddress("http://localhost/Restion.Tests.WebApi/api");
 
-                var restionRequest = new RestionRequest("/Customer/?")
+                var restionRequest = new RestionRequest("/Customer/")
                                           .AddParameter("Name","123")
                                           .AddParameter("DateOfBirth",DateTime.Now.ToShortDateString());
 
@@ -72,7 +67,7 @@ namespace Restion.Tests.LocalWebApiTests
                     }
                     else
                     {
-                        response.Content.Should().Be(new BolleanResponse(){Response = true});
+                        response.Content.Should().Be(new BolleanResponse() {Response = true});
                     }
                 }
                 else

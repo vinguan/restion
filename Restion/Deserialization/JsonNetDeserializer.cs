@@ -9,7 +9,6 @@ namespace Restion.Deserialization
     public class JsonNetDeserializer : IDeserialiazer
     {
         #region Public Properties
-        
         /// <summary>
         /// Gets or sets the root element for deserialization
         /// </summary>

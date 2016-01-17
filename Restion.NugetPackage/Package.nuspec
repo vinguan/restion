@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Restion</id>
+    <version>1.0.0-rc2</version>
+    <title>Restion</title>
+    <authors>Vinicius Gualberto - @vinguan</authors>
+    <owners>Vinicius Gualberto - @vinguan</owners>
+    <description>
+      An unifier of kingdoms portable class library for calling RESTful services in .NET
+    </description>
+    <releaseNotes>
+      [1.0.0-rc2]
+         [New-Features]
+           -Added FormUrlEncoded and MultiPartFormData support - check github page
+           -Added IRestionClientOptions in other the place of the concrete RestionClientOptions
+           -Added ASPNETCORE5 and UAP10 plataforms targets
+           -Removed Silverlight support because PCL profile with UAP10 and ASPNET5 does not support. (Who stil uses Silverlight anyway?)
+         [Bug-Fixes]
+           -Fixed a bug on building a query string from parameters dictionary
+           -Fixed a typo in RestionClient : SetDeSerializer to SetDeserializer
+    </releaseNotes>
+    <summary>
+      An unifier of kingdoms portable class library for calling RESTful services in .NET
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://nuget.org/packages/Restion</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <copyright>Copyright  2016</copyright>
+    <dependencies>
+        <group targetFramework="portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10">
+           <dependency id="Microsoft.Net.Http" version="2.2.29" />
+           <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+           <dependency id="Newtonsoft.Json" version="8.0.2" />
+        </group>
+    </dependencies>
+    <references>
+    </references>
+    <tags>REST, RESTFULL, HTTPCLIENT, HTTP-CLIENT, PCL, FLUENT, FLUENT-API</tags>
+  </metadata>
+  <files>
+    <file src="lib\" target="lib" />
+    <file src="tools\" target="tools" />
+    <file src="content\" target="content" />
+  </files>
+</package>

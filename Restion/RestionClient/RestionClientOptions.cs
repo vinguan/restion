@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents the options of the <see cref="IRestionClient"/>
     /// </summary>
-    public class RestionClientOptions
+    public class RestionClientOptions : IRestionClientOptions
     {
         /// <summary>
         /// Gets or sets a value indicating whether its going to be allowed raw content on the response

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion", "Restion\Restion.csproj", "{46B36843-A335-4B50-8C44-19AC821FDD20}"
 EndProject
@@ -15,6 +15,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{12608A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{09C8B6BE-2B7E-4429-9288-8D36E7BFAB53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{689501E6-A9C8-4D4C-834B-43623E15158E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion.NugetPackage", "Restion.NugetPackage\Restion.NugetPackage.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +42,19 @@ Global
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46B36843-A335-4B50-8C44-19AC821FDD20} = {689501E6-A9C8-4D4C-834B-43623E15158E}
+		{828130B8-5737-456D-A87B-B374C7700D82} = {BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}
+		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4} = {BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}
+		{12608A7E-CC7F-439E-9149-688635F98F28} = {09C8B6BE-2B7E-4429-9288-8D36E7BFAB53}
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {09C8B6BE-2B7E-4429-9288-8D36E7BFAB53}
 	EndGlobalSection
 EndGlobal

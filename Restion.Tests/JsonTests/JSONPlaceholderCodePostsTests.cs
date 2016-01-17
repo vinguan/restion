@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restion.Constants;
+using Restion.Extensions;
 using Restion.Tests.Models;
 
 namespace Restion.Tests.JsonTests
@@ -19,12 +21,11 @@ namespace Restion.Tests.JsonTests
         {
             try
             {
-                IRestionClient restionClient = new RestionClient()
-                    .SetBaseAddress("http://jsonplaceholder.typicode.com");
+                IRestionClient restionClient = new RestionClient().SetBaseAddress("http://jsonplaceholder.typicode.com");
 
-                var restionRequest = new RestionRequest("/posts/");
+                IRestionRequest restionRequest = new RestionRequest("/posts/");
 
-                var response = await restionClient.ExecuteRequestAsync<List<Post>>(restionRequest);
+                IRestionResponse<List<Post>> response = await restionClient.ExecuteRequestAsync<List<Post>>(restionRequest);
 
                 if (response != null)
                 {
@@ -51,12 +52,12 @@ namespace Restion.Tests.JsonTests
         {
             try
             {
-                var restionClient = new RestionClient()
-                                       .SetBaseAddress("http://jsonplaceholder.typicode.com");
+                IRestionClient restionClient = new RestionClient()
+                                                   .SetBaseAddress("http://jsonplaceholder.typicode.com");
 
-                var restionRequest = new RestionRequest("/posts/1");
+                IRestionRequest restionRequest = new RestionRequest("/posts/1");
 
-                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
+                IRestionResponse<Post> response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -97,7 +98,7 @@ namespace Restion.Tests.JsonTests
                                          .WithContentMediaType(MediaTypes.ApplicationJson)
                                          .WithContentEnconding(Encoding.UTF8);
 
-                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
+                IRestionResponse<Post> response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -123,10 +124,10 @@ namespace Restion.Tests.JsonTests
         {
             try
             {
-                var restionClient = new RestionClient()
+                IRestionClient restionClient = new RestionClient()
                                        .SetBaseAddress("http://jsonplaceholder.typicode.com");
 
-                var restionRequest = new RestionRequest("/posts/1")
+                IRestionRequest restionRequest = new RestionRequest("/posts/1")
                                          .WithHttpMethod(HttpMethod.Put)
                                          .WithContent(new Post()
                                          {
@@ -165,13 +166,13 @@ namespace Restion.Tests.JsonTests
         {
             try
             {
-                var restionClient = new RestionClient()
+                IRestionClient restionClient = new RestionClient()
                                        .SetBaseAddress("http://jsonplaceholder.typicode.com");
 
-                var restionRequest = new RestionRequest("/posts/1")
+                IRestionRequest restionRequest = new RestionRequest("/posts/1")
                                         .WithHttpMethod(HttpMethod.Delete);
 
-                var response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
+                IRestionResponse<Post> response = await restionClient.ExecuteRequestAsync<Post>(restionRequest);
 
                 if (response != null)
                 {
@@ -192,5 +193,20 @@ namespace Restion.Tests.JsonTests
             }
         }
 
+        [TestMethod]
+        public void TesteDictionaryToQueryString()
+        {
+             var parameters = new Dictionary<string,string>()
+             {
+                 ["Id"] = "123",
+                 ["Name"] = "Foo",
+                 ["Version"] = "2.0"
+             };
+
+            var queryString = parameters.ToQueryString();
+
+            Debug.WriteLine(queryString);
+        }
+ 
     }
 }

@@ -16,7 +16,8 @@ namespace Restion.Extensions
         public static string ToQueryString(this IDictionary<string, string> sourceDictionary)
         {
             var list = sourceDictionary.Select(item => item.Key + "=" + item.Value).ToList();
-            return string.Join("&", list);
+
+            return "?" + string.Join("&", list);
         }
     }
 }

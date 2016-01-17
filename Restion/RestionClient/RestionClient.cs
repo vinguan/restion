@@ -18,7 +18,7 @@ namespace Restion
 
         private CookieContainer _cookieContainer;
 
-        private readonly IDictionary<string, string> _defaultHeaders;
+        private IDictionary<string, string> _defaultHeaders;
 
         #endregion Fields
 
@@ -35,50 +35,58 @@ namespace Restion
         public IDeserialiazer Deserialiazer { get; private set; }
 
         /// <summary>
-        /// Gets the <see cref="RestionClientOptions"/> 
+        /// Gets the <see cref="IRestionClientOptions"/> 
         /// </summary>
-        public RestionClientOptions RestionClientOptions { get; private set; }
+        public IRestionClientOptions RestionClientOptions { get; private set; }
 
         /// <summary>
         /// Gets the internal <see cref="HttpClient"/>
         /// </summary>
         public HttpClient HttpClient { get; private set; }
 
+        /// <summary>
+        /// Gets the defaults headers that will be sent on every request
+        /// </summary>
+        public IDictionary<string, string> DefaultHeaders
+        {
+            get { return _defaultHeaders ?? (_defaultHeaders = new Dictionary<string, string>()); }
+        }
+
         #endregion Public Properties
 
         #region Public Constructors
+        /// <summary>
+        /// Default constructor for RestionClient with JsonNet and inicialization of Dictionaries
+        /// </summary>
+        public RestionClient() : this(new JsonNetSerializer(), new JsonNetDeserializer())
+        {
+
+        }
+
         /// <summary>
         /// Default constructor for RestionClient
         /// </summary>
         /// <param name="serializer"></param>
         /// <param name="deSerialiazer"></param>
-        /// <param name="defaultHeaders"></param>
-        public RestionClient(ISerialiazer serializer, IDeserialiazer deSerialiazer, IDictionary<string, string> defaultHeaders)
+        public RestionClient(ISerialiazer serializer, IDeserialiazer deSerialiazer)
         {
             Serializer = serializer;
             Deserialiazer = deSerialiazer;
-            _defaultHeaders = defaultHeaders;
-
-            RestionClientOptions = new RestionClientOptions();
-        }
-
-        /// <summary>
-        /// Default constructor for RestionClient with inicialization of Dictionaries
-        /// </summary>
-        /// <param name="serializer"></param>
-        /// <param name="deSerialiazer"></param>
-        public RestionClient(ISerialiazer serializer, IDeserialiazer deSerialiazer) : this(serializer,deSerialiazer, new Dictionary<string, string>())
-        {
-
         }
 
         /// <summary>
         /// Default constructor for RestionClient with JsonNet and inicialization of Dictionaries
         /// </summary>
-        public RestionClient() : this(new JsonNetSerializer(), new JsonNetDeserializer(), new Dictionary<string, string>())
+        public RestionClient(string baseUrl) : this(new JsonNetSerializer(), new JsonNetDeserializer())
         {
+            _baseUrlAddress = baseUrl;
 
+            HttpClient = new HttpClient
+            {
+                BaseAddress = new Uri(_baseUrlAddress)
+            };
         }
+
         #endregion Public Constructors
 
         #region Public Methods
@@ -95,6 +103,11 @@ namespace Restion
 
             _cookieContainer = cookieContainer;
 
+            HttpClient = new HttpClient(new HttpClientHandler { CookieContainer = _cookieContainer })
+            {
+                BaseAddress = new Uri(_baseUrlAddress)
+            };
+
             return this;
         }
 
@@ -110,7 +123,10 @@ namespace Restion
 
             _baseUrlAddress = baseAddress;
 
-            HttpClient = new HttpClient() { BaseAddress = new Uri(baseAddress) };
+            HttpClient = new HttpClient
+            {
+                BaseAddress = new Uri(_baseUrlAddress)
+            };
 
             return this;
         }
@@ -132,9 +148,21 @@ namespace Restion
         /// </summary>
         /// <param name="deSerialiazer">Implementation of <see cref="IDeserialiazer"/></param>
         /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
-        public IRestionClient SetDeSerializer(IDeserialiazer deSerialiazer)
+        public IRestionClient SetDeserializer(IDeserialiazer deSerialiazer)
         {
             Deserialiazer = deSerialiazer;
+
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the <see cref="IRestionClientOptions"/>
+        /// </summary>
+        /// <param name="restionClientOptions">The restion client options</param>
+        /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
+        public IRestionClient SetRestionClientOptions(IRestionClientOptions restionClientOptions)
+        {
+            RestionClientOptions = restionClientOptions;
 
             return this;
         }
@@ -161,10 +189,10 @@ namespace Restion
         public async Task<IRestionResponse<TResponseContent>> ExecuteRequestAsync<TResponseContent>(IRestionRequest restionRequest) where TResponseContent : class
         {
 
-            if(restionRequest == null)
+            if (restionRequest == null)
                 throw new ArgumentNullException("restionRequest");
 
-            if(Serializer == null)
+            if (Serializer == null)
                 throw new Exception("Serializer is not defined");
 
             if (Deserialiazer == null)
@@ -174,9 +202,7 @@ namespace Restion
 
             try
             {
-                HttpResponseMessage httpReponseMessage;
-
-                if (!string.IsNullOrWhiteSpace(RestionClientOptions.DateFormat))
+                if (RestionClientOptions != null && !string.IsNullOrWhiteSpace(RestionClientOptions.DateFormat))
                 {
                     Serializer.DateFormat = RestionClientOptions.DateFormat;
                     Deserialiazer.DateFormat = RestionClientOptions.DateFormat;
@@ -186,53 +212,36 @@ namespace Restion
 
                 restionRequest.BaseUrl = _baseUrlAddress;
 
-                foreach (var defaultHeader in _defaultHeaders)
+                foreach (var defaultHeader in DefaultHeaders)
                 {
                     restionRequest.AddHeader(defaultHeader.Key, defaultHeader.Value);
                 }
 
-                if (_cookieContainer != null)
-                {
-                    HttpClient = new HttpClient(new HttpClientHandler {CookieContainer = _cookieContainer})
-                    {
-                        BaseAddress = new Uri(_baseUrlAddress)
-                    };
+                //Gets the HttpRequestMessage from RestionRequest
+                var httpRequestMessage = await restionRequest.GetHttpRequestMessageAsync();
 
-                    using (HttpClient)
-                    {
-                        var httpRequestMessage = await restionRequest.GetHttpRequestMessageAsync();
+                //Sends HttpRequestMessage
+                restionResponse.HttpResponseMessage = await HttpClient.SendAsync(httpRequestMessage);
 
-                        httpReponseMessage = await HttpClient.SendAsync(httpRequestMessage);
-                    }
-                }
-                else
-                {
-                    using (HttpClient)
-                    {
-                        var httpRequestMessage = await restionRequest.GetHttpRequestMessageAsync();
+                //Mount the restion response
+                var rawContent = await restionResponse.HttpResponseMessage.Content.ReadAsStringAsync();
 
-                        httpReponseMessage = await HttpClient.SendAsync(httpRequestMessage);
-
-                        restionResponse.HttpResponseMessage = httpReponseMessage;
-                    }
-                }
-
-                var rawContent = await httpReponseMessage.Content.ReadAsStringAsync();
-
+                //Deserializes the content
                 restionResponse.Content = await Deserialiazer.DeserializeAsync<TResponseContent>(rawContent);
 
                 //Set restion client options
-                if (RestionClientOptions != null)
+                if (RestionClientOptions != null && RestionClientOptions.AllowRawContent)
                 {
-                    if (RestionClientOptions.AllowRawContent)
-                    {
-                        restionResponse.RawContent = rawContent;
-                    }
+                    restionResponse.RawContent = rawContent;
                 }
             }
             catch (Exception ex)
             {
                 restionResponse.Exception = ex;
+            }
+            finally
+            {
+                restionRequest.Dispose();
             }
 
             return restionResponse;

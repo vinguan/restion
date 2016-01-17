@@ -32,10 +32,9 @@ namespace Restion
         /// <summary>
         /// Sets the content of the request
         /// </summary>
-        /// <typeparam name="T">type to be serialized</typeparam>
         /// <param name="content">The content of the request</param>
         /// <returns>An instance of a concrete implementation of <see cref="IRestionRequest"/></returns>
-        IRestionRequest WithContent<T>(T content);
+        IRestionRequest WithContent(object content);
 
         /// <summary>
         /// Sets the enconding of the request
@@ -73,6 +72,22 @@ namespace Restion
         /// <param name="headerValue">String with the header value</param>
         /// <returns>An instance of a concrete implementation of <see cref="IRestionRequest"/></returns>
         IRestionRequest AddHeader(string headerKey, string headerValue);
+
+        /// <summary>
+        /// Adds a header ont the request
+        /// </summary>
+        /// <param name="formUrlKey">String with the header name</param>
+        /// <param name="formUrlValue">String with the header value</param>
+        /// <returns>An instance of a concrete implmentation of <see cref="IRestionRequest"/></returns>
+        IRestionRequest AddFormUrl(string formUrlKey, string formUrlValue);
+
+        /// <summary>
+        /// Adds a header ont the request
+        /// </summary>
+        /// <param name="formDataKey">String with the header name</param>
+        /// <param name="formDataValue">String with the header value</param>
+        /// <returns>An instance of a concrete implmentation of <see cref="IRestionRequest"/></returns>
+        IRestionRequest AddFormData(string formDataKey, object formDataValue);
 
         /// <summary>
         /// Builds asynchronously a <see cref="HttpRequestMessage"/> based on this <see cref="IRestionRequest"/>

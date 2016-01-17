@@ -25,11 +25,11 @@ namespace Restion.Serialization
         #region Public Methods
 
         /// <summary>
-        /// Serializes <see cref="T"/> using Json.NET asynchronously based on a string value
+        /// Serializes using Json.NET asynchronously based on a string value
         /// </summary>
         /// <typeparam name="T">The type to be Serialized</typeparam>
-        /// <param name="obj">Instance of the <see cref="T"/></param>
-        /// <returns>The <see cref="T"/> serialized into a string</returns>
+        /// <param name="obj">Instance of the object</param>
+        /// <returns>The object serialized into a string</returns>
         public Task<string> SerializeAsync<T>(T obj) where T : class
         {
             return Task.Factory.StartNew(() =>

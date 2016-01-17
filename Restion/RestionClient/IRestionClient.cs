@@ -25,7 +25,7 @@ namespace Restion
         /// <summary>
         /// Gets the <see cref="RestionClientOptions"/> 
         /// </summary>
-        RestionClientOptions RestionClientOptions { get;  }
+        IRestionClientOptions RestionClientOptions { get;  }
 
         /// <summary>
         /// Gets the internal <see cref="HttpClient"/>
@@ -60,7 +60,14 @@ namespace Restion
         /// </summary>
         /// <param name="deSerialiazer">Implementation of <see cref="IDeserialiazer"/></param>
         /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
-        IRestionClient SetDeSerializer(IDeserialiazer deSerialiazer);
+        IRestionClient SetDeserializer(IDeserialiazer deSerialiazer);
+
+        /// <summary>
+        /// Sets the <see cref="IRestionClientOptions"/>
+        /// </summary>
+        /// <param name="restionClientOptions">The restion client options</param>
+        /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
+        IRestionClient SetRestionClientOptions(IRestionClientOptions restionClientOptions);
 
         /// <summary>
         /// Adds a default heards that will be sent on every request

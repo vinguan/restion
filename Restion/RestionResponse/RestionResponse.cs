@@ -8,7 +8,7 @@ namespace Restion
     /// Default implementation of <see cref="IRestionResponse{TContent}"/>
     /// </summary>
     /// <typeparam name="TContent"></typeparam>
-    public class RestionResponse<TContent> : IRestionResponse<TContent> where TContent : class 
+    internal class RestionResponse<TContent> : IRestionResponse<TContent> where TContent : class 
     {
         #region Public Properties
 

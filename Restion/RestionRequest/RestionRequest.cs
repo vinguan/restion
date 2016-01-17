@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,16 @@ namespace Restion
         /// Dictionary of parameters
         /// </summary>
         private IDictionary<string, string> _parameters;
+
+        /// <summary>
+        /// Dictionary of form url encoded
+        /// </summary>
+        private IDictionary<string, string> _formUrlEncoded;
+
+        /// <summary>
+        /// Dictionary of form url encoded
+        /// </summary>
+        private IList<Tuple<string, object>> _formData;
 
         /// <summary>
         /// Dictionary of headers
@@ -64,18 +76,47 @@ namespace Restion
 
         #endregion Public Properties
 
+        #region Private Properties
+        /// <summary>
+        /// Gets the parameters
+        /// </summary>
+        private IDictionary<string, string> Parameters
+        {
+            get { return _parameters ?? (_parameters = new Dictionary<string, string>()); }
+        }
+
+        /// <summary>
+        /// Gets the headers
+        /// </summary>
+        private IDictionary<string, string> Headers
+        {
+            get { return _headers ?? (_headers = new Dictionary<string, string>()); }
+        }
+
+        /// <summary>
+        /// Dictionary of form url encoded parameters
+        /// </summary>
+        public IDictionary<string, string> FormUrlEncoded
+        {
+            get { return _formUrlEncoded ?? (_formUrlEncoded = new Dictionary<string, string>()); }
+        }
+
+        /// <summary>
+        /// Dictionary of form data
+        /// </summary>
+        public IList<Tuple<string, object>> FormData
+        {
+            get { return _formData ?? (_formData = new List<Tuple<string, object>>()); }
+        }
+
+        #endregion Private Properties
+
         #region Public Constructors
         /// <summary>
         /// Initializes a new instance of <see cref="RestionRequest"/> class
         /// </summary>
-        /// <param name="parameters">A dictionary for the parameters</param>
-        /// <param name="headers">A dictionary for the headers</param>
-        public RestionRequest(IDictionary<string, string> parameters,
-                              IDictionary<string, string> headers)
+        public RestionRequest()
         {
-            _parameters = parameters;
-            _headers = headers;
-
             //Sets default httpMethod
             Method = HttpMethod.Get;
         }
@@ -84,12 +125,9 @@ namespace Restion
         /// Initializes a new instance of <see cref="RestionRequest"/> class using a base url
         /// </summary>
         /// <param name="url">Base url of the request</param>
-        public RestionRequest(string url) : this(new Dictionary<string, string>(),
-                                                 new Dictionary<string, string>())
+        public RestionRequest(string url) : this()
         {
             _url = url;
-
-            _mediaType = "";
         }
 
         #endregion Public Constructors
@@ -99,10 +137,9 @@ namespace Restion
         /// <summary>
         /// Sets the content of the request
         /// </summary>
-        /// <typeparam name="T">type to be serialized</typeparam>
         /// <param name="content">The content of the request</param>
         /// <returns>An instance of a concrete implmentation of <see cref="IRestionRequest"/></returns>
-        public IRestionRequest WithContent<T>(T content)
+        public IRestionRequest WithContent(object content)
         {
             _content = content;
 
@@ -147,16 +184,16 @@ namespace Restion
             if (string.IsNullOrWhiteSpace(parameterValue))
                 throw new ArgumentNullException("parameterValue");
 
-            if (_parameters.ContainsKey(parameterKey))
+            if (Parameters.ContainsKey(parameterKey))
                 throw new ArgumentException("There is already a paramater with this key");
 
-            _parameters.Add(parameterKey, parameterValue);
+            Parameters.Add(parameterKey, parameterValue);
 
             return this;
         }
 
         /// <summary>
-        /// Adds a header ont the request
+        /// Adds a header in the request
         /// </summary>
         /// <param name="headerKey">String with the header name</param>
         /// <param name="headerValue">String with the header value</param>
@@ -169,10 +206,54 @@ namespace Restion
             if (string.IsNullOrWhiteSpace(headerValue))
                 throw new ArgumentNullException("headerValue");
 
-            if (_parameters.ContainsKey(headerKey))
+            if (Headers.ContainsKey(headerKey))
                 throw new ArgumentException("There is already a paramater with this key");
 
-            _headers.Add(headerKey, headerValue);
+            Headers.Add(headerKey, headerValue);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a header ont the request
+        /// </summary>
+        /// <param name="formUrlKey">String with the form url key</param>
+        /// <param name="formUrlValue">String with the  form url value</param>
+        /// <returns>An instance of a concrete implmentation of <see cref="IRestionRequest"/></returns>
+        public IRestionRequest AddFormUrl(string formUrlKey, string formUrlValue)
+        {
+            if (string.IsNullOrWhiteSpace(formUrlKey))
+                throw new ArgumentNullException("formUrlKey");
+
+            if (string.IsNullOrWhiteSpace(formUrlValue))
+                throw new ArgumentNullException("formUrlValue");
+
+            if (FormUrlEncoded.ContainsKey(formUrlValue))
+                throw new ArgumentException("There is already a paramater with this key");
+
+            FormUrlEncoded.Add(formUrlKey, formUrlValue);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a header ont the request
+        /// </summary>
+        /// <param name="formDataKey">String with the form data key</param>
+        /// <param name="formDataValue">String with the form data value</param>
+        /// <returns>An instance of a concrete implmentation of <see cref="IRestionRequest"/></returns>
+        public IRestionRequest AddFormData(string formDataKey, object formDataValue)
+        {
+            if (string.IsNullOrWhiteSpace(formDataKey))
+                throw new ArgumentNullException("formDataKey");
+
+            if (formDataValue == null)
+                throw new ArgumentNullException("formDataValue");
+
+            if (FormData.Any(predicate => predicate.Item1 == formDataKey))
+                throw new ArgumentException("There is already a paramater with this key");
+
+            FormData.Add(new Tuple<string, object>(formDataKey, formDataValue));
 
             return this;
         }
@@ -200,7 +281,7 @@ namespace Restion
                 var httpRequestMessage = new HttpRequestMessage { Method = Method };
 
                 #region Headers
-                foreach (var header in _headers)
+                foreach (var header in Headers)
                 {
                     httpRequestMessage.Headers.Add(header.Key, header.Value);
                 }
@@ -208,7 +289,7 @@ namespace Restion
 
                 #region Parameters
 
-                var parametersUrl = _parameters.ToQueryString();
+                var parametersUrl = Parameters.ToQueryString();
 
                 var uri = new Uri(BaseUrl + _url + parametersUrl);
 
@@ -218,22 +299,58 @@ namespace Restion
 
                 #region Content
 
-                if (Method == HttpMethod.Get || Method == HttpMethod.Delete) 
+                //If the request is get method there is no content
+                if (Method == HttpMethod.Get)
                     return httpRequestMessage;
 
+                //application/x-www-form-urlencoded
+                if (!_formUrlEncoded.IsNullOrEmpty())
+                {
+                    httpRequestMessage.Content = new FormUrlEncodedContent(_formUrlEncoded);
+
+                    return httpRequestMessage;
+                }
+
+                //Multipart/form-data
+                if (!_formData.IsNullOrEmpty())
+                {
+                    var formDataMultipartFormData = new MultipartFormDataContent();
+
+                    foreach (var data in _formData)
+                    {
+                        var bytes = data.Item2 as byte[];
+                        if (bytes != null)
+                        {
+                            formDataMultipartFormData.Add(new ByteArrayContent(bytes), data.Item1);
+                        }
+                        else if (data.Item2 is Stream)
+                        {
+                            formDataMultipartFormData.Add(new StreamContent((Stream) data.Item2), data.Item1);
+                        }
+                        else
+                        {
+                            formDataMultipartFormData.Add(new StringContent(data.Item2.ToString()), data.Item1);
+                        }
+                    }
+
+                    httpRequestMessage.Content = formDataMultipartFormData;
+
+                    return httpRequestMessage;
+                }
+
+                //Default string content
                 var contentSerialized = await Serialiazer.SerializeAsync(_content);
 
                 httpRequestMessage.Content = new StringContent(contentSerialized, _encoding, _mediaType);
 
-                #endregion Content
-
                 return httpRequestMessage;
+
+                #endregion Content
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-           
         }
 
         #endregion Public Methods
@@ -244,6 +361,22 @@ namespace Restion
         /// </summary>
         public void Dispose()
         {
+            _parameters = null;
+
+            _headers = null;
+
+            _url = null;
+
+            _encoding = null;
+
+            _mediaType = null;
+
+            Method = null;
+
+            Serialiazer = null;
+
+            BaseUrl = null;
+
             Dispose(true);
 
             GC.SuppressFinalize(this);
@@ -252,27 +385,10 @@ namespace Restion
         /// <summary>
         /// Dispose for derived classes
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">If it is disposing</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _parameters = null;
 
-                _headers = null;
-
-                _url = null;
-
-                _encoding = null;
-
-                _mediaType = null;
-
-                Method = null;
-
-                Serialiazer = null;
-
-                BaseUrl = null;
-            }
         }
 
         #endregion IDisposable
