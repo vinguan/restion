@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restion.Constants;
 using Restion.Extensions;
 using Restion.Tests.Models;
+using Restion;
 
 namespace Restion.Tests.JsonTests
 {
