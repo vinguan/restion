@@ -30,9 +30,9 @@ namespace Restion.Serialization
         /// <typeparam name="T">The type to be Serialized</typeparam>
         /// <param name="obj">Instance of the object</param>
         /// <returns>The object serialized into a string</returns>
-        public Task<string> SerializeAsync<T>(T obj) where T : class
+        public async Task<string> SerializeAsync<T>(T obj) where T : class
         {
-            return Task.Factory.StartNew(() =>
+            var serializationTask = Task.Factory.StartNew(() =>
             {
                 if (DateFormat != null)
                 {
@@ -44,6 +44,8 @@ namespace Restion.Serialization
                 return JsonConvert.SerializeObject(obj);
                 
             });
+
+            return await serializationTask;
         }
 
         #endregion Public Methods

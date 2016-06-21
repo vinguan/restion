@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Restion.Deserialization;
 using Restion.Serialization;
@@ -176,6 +177,20 @@ namespace Restion
         public IRestionClient AddDefaultHeader(string headerKey, string headerValue)
         {
             _defaultHeaders.Add(headerKey, headerValue);
+
+            return this;
+        }
+
+
+        /// <summary>
+        /// Sets the Authorization header
+        /// </summary>
+        /// <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+        /// <param name="type">The type of the auth header e.g. "Bearer" </param>
+        /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
+        public IRestionClient SetAuthorizationHeader(string value, string type = null)
+        {
+           HttpClient.DefaultRequestHeaders.Authorization = string.IsNullOrWhiteSpace(type) ? new AuthenticationHeaderValue(value) : new AuthenticationHeaderValue(type, value);
 
             return this;
         }

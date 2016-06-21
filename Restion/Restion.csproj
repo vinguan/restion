@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="Constants\MediaTypes.cs" />
     <Compile Include="Deserialization\IDeserialiazer.cs" />
-    <Compile Include="Deserialization\XmlDeserializer.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
@@ -57,7 +56,6 @@
     <Compile Include="Serialization\ISerialiazer.cs" />
     <Compile Include="Deserialization\JsonNetDeserializer.cs" />
     <Compile Include="Serialization\JsonNetSerializer.cs" />
-    <Compile Include="Serialization\XmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -78,6 +78,14 @@ namespace Restion
         IRestionClient AddDefaultHeader(string headerKey, string headerValue);
 
         /// <summary>
+        /// Sets the Authorization header
+        /// </summary>
+        /// <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+        /// <param name="type">The type of the auth header e.g. "Bearer" </param>
+        /// <returns>An instance of a concrete implementation of <see cref="IRestionClient"/></returns>
+        IRestionClient SetAuthorizationHeader(string value, string type = null);
+
+        /// <summary>
         /// Execute asynchronously a <see cref="IRestionRequest"/> 
         /// </summary>
         /// <typeparam name="TResponseContent">Content of the response</typeparam>
