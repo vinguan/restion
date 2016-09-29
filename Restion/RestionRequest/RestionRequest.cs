@@ -215,7 +215,7 @@ namespace Restion
         }
 
         /// <summary>
-        /// Adds a header ont the request
+        /// Adds a form url enconded into the request
         /// </summary>
         /// <param name="formUrlKey">String with the form url key</param>
         /// <param name="formUrlValue">String with the  form url value</param>
@@ -237,7 +237,7 @@ namespace Restion
         }
 
         /// <summary>
-        /// Adds a header ont the request
+        /// Adds a form data into the request
         /// </summary>
         /// <param name="formDataKey">String with the form data key</param>
         /// <param name="formDataValue">String with the form data value</param>

@@ -28,9 +28,9 @@ namespace Restion.Deserialization
         /// <typeparam name="T">Type to be deserialized</typeparam>
         /// <param name="value">String to deserialize</param>
         /// <returns>A instance of <see cref="T"/> deserialized</returns>
-        public Task<T> DeserializeAsync<T>(string value) where T : class
+        public async Task<T> DeserializeAsync<T>(string value) where T : class
         {
-            return Task.Factory.StartNew(() =>
+            var deserializationTask = Task.Run(() =>
             {
                 if (DateFormat != null)
                 {
@@ -41,6 +41,8 @@ namespace Restion.Deserialization
 
                 return JsonConvert.DeserializeObject<T>(value);
             } );
+
+            return await deserializationTask;
         }
         #endregion Public Methods
     }

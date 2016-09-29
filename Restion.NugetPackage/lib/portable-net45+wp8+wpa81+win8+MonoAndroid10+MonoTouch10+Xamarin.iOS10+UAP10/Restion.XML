@@ -332,24 +332,6 @@
             <param name="value">String to deserialize</param>
             <returns>A instance of <see cref="!:T"/> deserialized</returns>
         </member>
-        <member name="P:Restion.Deserialization.XmlDeserializer.RootElement">
-            <summary>
-            Gets or sets the root element for deserialization
-            </summary>
-        </member>
-        <member name="P:Restion.Deserialization.XmlDeserializer.DateFormat">
-            <summary>
-            Gets or sets the date format for deserialization
-            </summary>
-        </member>
-        <member name="M:Restion.Deserialization.XmlDeserializer.DeserializeAsync``1(System.String)">
-            <summary>
-            Deserializes <see cref="!:T"/> asynchronously based on a string value
-            </summary>
-            <typeparam name="T">Type to be deserialized</typeparam>
-            <param name="value">String to deserialize</param>
-            <returns>A instance of <see cref="!:T"/> deserialized</returns>
-        </member>
         <member name="T:Restion.Deserialization.JsonNetDeserializer">
             <summary>
             Represents the Json.NET implementation of <see cref="T:Restion.Deserialization.IDeserialiazer"/> 
@@ -463,6 +445,14 @@
             <param name="headerValue"><see cref="T:System.String"/> with the header value</param>
             <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
         </member>
+        <member name="M:Restion.IRestionClient.SetAuthorizationHeader(System.String,System.String)">
+            <summary>
+            Sets the Authorization header
+            </summary>
+            <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+            <param name="type">The type of the auth header e.g. "Bearer" </param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
         <member name="M:Restion.IRestionClient.ExecuteRequestAsync``1(Restion.IRestionRequest)">
             <summary>
             Execute asynchronously a <see cref="T:Restion.IRestionRequest"/> 
@@ -574,6 +564,14 @@
             </summary>
             <param name="headerKey"><see cref="T:System.String"/> with the header key</param>
             <param name="headerValue"><see cref="T:System.String"/> with the header value</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetAuthorizationHeader(System.String,System.String)">
+            <summary>
+            Sets the Authorization header
+            </summary>
+            <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+            <param name="type">The type of the auth header e.g. "Bearer" </param>
             <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
         </member>
         <member name="M:Restion.RestionClient.ExecuteRequestAsync``1(Restion.IRestionRequest)">
@@ -820,7 +818,7 @@
         </member>
         <member name="M:Restion.RestionRequest.AddFormUrl(System.String,System.String)">
             <summary>
-            Adds a header ont the request
+            Adds a form url enconded into the request
             </summary>
             <param name="formUrlKey">String with the form url key</param>
             <param name="formUrlValue">String with the  form url value</param>
@@ -828,7 +826,7 @@
         </member>
         <member name="M:Restion.RestionRequest.AddFormData(System.String,System.Object)">
             <summary>
-            Adds a header ont the request
+            Adds a form data into the request
             </summary>
             <param name="formDataKey">String with the form data key</param>
             <param name="formDataValue">String with the form data value</param>
@@ -965,29 +963,6 @@
             <typeparam name="T">The type to be Serialized</typeparam>
             <param name="obj">Instance of the object</param>
             <returns>The object serialized into a string</returns>
-        </member>
-        <member name="T:Restion.Serialization.XmlSerializer">
-            <summary>
-            Represents the JsonNET implementation of <see cref="T:Restion.Serialization.ISerialiazer"/> 
-            </summary>
-        </member>
-        <member name="P:Restion.Serialization.XmlSerializer.RootElement">
-            <summary>
-            Gets or sets the root element for serialization
-            </summary>
-        </member>
-        <member name="P:Restion.Serialization.XmlSerializer.DateFormat">
-            <summary>
-            Gets or sets the date format for deserialization
-            </summary>
-        </member>
-        <member name="M:Restion.Serialization.XmlSerializer.SerializeAsync``1(``0)">
-            <summary>
-            Serializes <see cref="!:T"/> asynchronously based on a string value
-            </summary>
-            <typeparam name="T">The type to be Serialized</typeparam>
-            <param name="obj">Instance of the <see cref="!:T"/></param>
-            <returns>The <see cref="!:T"/> serialized into a string</returns>
         </member>
     </members>
 </doc>

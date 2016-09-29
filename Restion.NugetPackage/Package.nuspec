@@ -2,14 +2,17 @@
 <package >
   <metadata>
     <id>Restion</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <title>Restion</title>
     <authors>Vinicius Gualberto - @vinguan</authors>
     <owners>Vinicius Gualberto - @vinguan</owners>
     <description>
-      An unifier of kingdoms portable class library for calling RESTful services in .NET
+      An unifier of kingdoms Fluent Class Library(FCL) for calling RESTful services in .NET
     </description>
     <releaseNotes>
+      [1.1.0]
+         [New-Features]
+           -Added SetAuthorizationHeader on RestionClient to use as a shortcut for default auth header that should be sent on every request
       [1.0.0]
       ---Initial stable release
       [1.0.0-rc2]
