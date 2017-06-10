@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Restion</id>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <title>Restion</title>
     <authors>Vinicius Gualberto - @vinguan</authors>
     <owners>Vinicius Gualberto - @vinguan</owners>
@@ -10,6 +10,13 @@
       An unifier of kingdoms Fluent Class Library(FCL) for calling RESTful services in .NET
     </description>
     <releaseNotes>
+      [1.2.0]
+       [Bug-Fixes]
+        -Fixed serializing content even if it is null or not set
+        -Added default enconding(UTF-8).
+        [Api-Changes]
+        -FormUrl, FormData and ISerializer on IRestionRequest properties are not public accesible anymore. The fluent interface apis for them are the same.
+        -Added Json.NET minimum dependency to 10.0.2
       [1.1.0]
          [New-Features]
            -Added SetAuthorizationHeader on RestionClient to use as a shortcut for default auth header that should be sent on every request
@@ -33,15 +40,15 @@
     <iconUrl>https://raw.githubusercontent.com/vinguan/restion/master/restion-logo.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <copyright>Copyright  2015</copyright>
+    <copyright>Copyright  2017</copyright>
     <dependencies>
         <group targetFramework="portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10">
            <dependency id="Microsoft.Net.Http" version="2.2.29" />
            <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-           <dependency id="Newtonsoft.Json" version="8.0.3" />
+           <dependency id="Newtonsoft.Json" version="10.0.2" />
         </group>
     </dependencies>
-    <tags>REST RESTFULL HTTPCLIENT HTTP-CLIENT PCL FLUENT FLUENT-API</tags>
+    <tags>REST RESTFULL RESTION HTTPCLIENT HTTP-CLIENT PCL FLUENT FLUENT-API</tags>
   </metadata>
   <files>
     <file src="lib\" target="lib" />

@@ -181,7 +181,6 @@ namespace Restion
             return this;
         }
 
-
         /// <summary>
         /// Sets the Authorization header
         /// </summary>
@@ -211,7 +210,7 @@ namespace Restion
                 throw new Exception("Serializer is not defined");
 
             if (Deserialiazer == null)
-                throw new Exception("DeSerializer is not defined");
+                throw new Exception("Deserializer is not defined");
 
             var restionResponse = new RestionResponse<TResponseContent>();
 
@@ -223,7 +222,8 @@ namespace Restion
                     Deserialiazer.DateFormat = RestionClientOptions.DateFormat;
                 }
 
-                restionRequest.Serialiazer = Serializer;
+                //Pass the serializer to the request
+                ((RestionRequest)restionRequest).Serialiazer = Serializer;
 
                 restionRequest.BaseUrl = _baseUrlAddress;
 
@@ -233,7 +233,10 @@ namespace Restion
                 }
 
                 //Gets the HttpRequestMessage from RestionRequest
-                var httpRequestMessage = await restionRequest.GetHttpRequestMessageAsync();
+                var httpRequestMessage = await restionRequest.BuildHttpRequestMessageAsync();
+
+                if(httpRequestMessage == null)
+                    throw new Exception("An error occurred when buiding the HttpRequestMessage, please check if you are putting the content values in the right way");
 
                 //Sends HttpRequestMessage
                 restionResponse.HttpResponseMessage = await HttpClient.SendAsync(httpRequestMessage);
