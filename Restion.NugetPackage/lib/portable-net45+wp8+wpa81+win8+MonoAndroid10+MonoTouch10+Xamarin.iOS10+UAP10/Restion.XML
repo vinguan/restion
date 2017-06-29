@@ -612,11 +612,6 @@
             Gets the HttpMethod for the http request.
             </summary>
         </member>
-        <member name="P:Restion.IRestionRequest.Serialiazer">
-            <summary>
-            Gets or sets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
-            </summary>
-        </member>
         <member name="P:Restion.IRestionRequest.BaseUrl">
             <summary>
             Gets or sets the base url for the request
@@ -682,7 +677,7 @@
             <param name="formDataValue">String with the header value</param>
             <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
         </member>
-        <member name="M:Restion.IRestionRequest.GetHttpRequestMessageAsync">
+        <member name="M:Restion.IRestionRequest.BuildHttpRequestMessageAsync">
             <summary>
             Builds asynchronously a <see cref="T:System.Net.Http.HttpRequestMessage"/> based on this <see cref="T:Restion.IRestionRequest"/>
             </summary>
@@ -738,11 +733,6 @@
             Gets the HttpMethod for the http request.
             </summary>
         </member>
-        <member name="P:Restion.RestionRequest.Serialiazer">
-            <summary>
-            Gets or sets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
-            </summary>
-        </member>
         <member name="P:Restion.RestionRequest.BaseUrl">
             <summary>
             Gets or sets the base url for the request
@@ -766,6 +756,11 @@
         <member name="P:Restion.RestionRequest.FormData">
             <summary>
             Dictionary of form data
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.Serialiazer">
+            <summary>
+            Gets or sets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
             </summary>
         </member>
         <member name="M:Restion.RestionRequest.#ctor">
@@ -839,7 +834,7 @@
             <param name="method">An instance of<see cref="T:System.Net.Http.HttpMethod"/></param>
             <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
         </member>
-        <member name="M:Restion.RestionRequest.GetHttpRequestMessageAsync">
+        <member name="M:Restion.RestionRequest.BuildHttpRequestMessageAsync">
             <summary>
             Builds asynchronously a <see cref="T:System.Net.Http.HttpRequestMessage"/> based on this <see cref="T:Restion.IRestionRequest"/>
             </summary>

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Restion.Constants;
 using Restion.Extensions;
 using Restion.Serialization;
 
@@ -65,11 +67,6 @@ namespace Restion
         public HttpMethod Method { get; private set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ISerialiazer"/> implementation for this request
-        /// </summary>
-        public ISerialiazer Serialiazer { get; set; }
-
-        /// <summary>
         /// Gets or sets the base url for the request
         /// </summary>
         public string BaseUrl { get; set; }
@@ -96,7 +93,7 @@ namespace Restion
         /// <summary>
         /// Dictionary of form url encoded parameters
         /// </summary>
-        public IDictionary<string, string> FormUrlEncoded
+        private IDictionary<string, string> FormUrlEncoded
         {
             get { return _formUrlEncoded ?? (_formUrlEncoded = new Dictionary<string, string>()); }
         }
@@ -104,12 +101,19 @@ namespace Restion
         /// <summary>
         /// Dictionary of form data
         /// </summary>
-        public IList<Tuple<string, object>> FormData
+        private IList<Tuple<string, object>> FormData
         {
             get { return _formData ?? (_formData = new List<Tuple<string, object>>()); }
         }
 
         #endregion Private Properties
+
+        #region Internal Properties
+        /// <summary>
+        /// Gets or sets the <see cref="ISerialiazer"/> implementation for this request
+        /// </summary>
+        internal ISerialiazer Serialiazer { get; set; }
+        #endregion 
 
         #region Public Constructors
         /// <summary>
@@ -274,83 +278,97 @@ namespace Restion
         /// Builds asynchronously a <see cref="HttpRequestMessage"/> based on this <see cref="IRestionRequest"/>
         /// </summary>
         /// <returns>The <see cref="HttpRequestMessage"/> built</returns>
-        public async Task<HttpRequestMessage> GetHttpRequestMessageAsync()
+        public async Task<HttpRequestMessage> BuildHttpRequestMessageAsync()
         {
-            try
+            var httpRequestMessage = new HttpRequestMessage { Method = Method };
+
+            #region Headers
+            foreach (var header in Headers)
             {
-                var httpRequestMessage = new HttpRequestMessage { Method = Method };
+                httpRequestMessage.Headers.Add(header.Key, header.Value);
+            }
+            #endregion Headers
 
-                #region Headers
-                foreach (var header in Headers)
-                {
-                    httpRequestMessage.Headers.Add(header.Key, header.Value);
-                }
-                #endregion Headers
+            #region Parameters
 
-                #region Parameters
+            var parametersUrl = Parameters.ToQueryString();
 
-                var parametersUrl = Parameters.ToQueryString();
+            var uri = new Uri(BaseUrl + _url + parametersUrl);
 
-                var uri = new Uri(BaseUrl + _url + parametersUrl);
+            httpRequestMessage.RequestUri = uri;
 
-                httpRequestMessage.RequestUri = uri;
+            #endregion Parameters
 
-                #endregion Parameters
+            #region Content
 
-                #region Content
+            //Default Encoding
+            if (_encoding == null)
+            {
+                _encoding = Encoding.UTF8;
+            }
 
-                //If the request is get method there is no content
-                if (Method == HttpMethod.Get)
-                    return httpRequestMessage;
+            //If the request is get method there is no content
+            if (Method == HttpMethod.Get)
+                return httpRequestMessage;
 
-                //application/x-www-form-urlencoded
-                if (!_formUrlEncoded.IsNullOrEmpty())
-                {
-                    httpRequestMessage.Content = new FormUrlEncodedContent(_formUrlEncoded);
+            //application/x-www-form-urlencoded
+            if (!_formUrlEncoded.IsNullOrEmpty())
+            {
+                httpRequestMessage.Content = new FormUrlEncodedContent(_formUrlEncoded);
 
-                    return httpRequestMessage;
-                }
+                return httpRequestMessage;
+            }
 
-                //Multipart/form-data
-                if (!_formData.IsNullOrEmpty())
-                {
-                    var formDataMultipartFormData = new MultipartFormDataContent();
-
-                    foreach (var data in _formData)
-                    {
-                        var bytes = data.Item2 as byte[];
-                        if (bytes != null)
-                        {
-                            formDataMultipartFormData.Add(new ByteArrayContent(bytes), data.Item1);
-                        }
-                        else if (data.Item2 is Stream)
-                        {
-                            formDataMultipartFormData.Add(new StreamContent((Stream) data.Item2), data.Item1);
-                        }
-                        else
-                        {
-                            formDataMultipartFormData.Add(new StringContent(data.Item2.ToString()), data.Item1);
-                        }
-                    }
-
-                    httpRequestMessage.Content = formDataMultipartFormData;
-
-                    return httpRequestMessage;
-                }
-
-                //Default string content
+            //String Content
+            if (_content != null)
+            {
                 var contentSerialized = await Serialiazer.SerializeAsync(_content);
+
+                if (Serialiazer is JsonNetSerializer)
+                {
+                    if (string.IsNullOrWhiteSpace(_mediaType))
+                    {
+                        _mediaType = MediaTypes.ApplicationJson;
+                    }
+                }
 
                 httpRequestMessage.Content = new StringContent(contentSerialized, _encoding, _mediaType);
 
-                return httpRequestMessage;
+                httpRequestMessage.Content.Headers.ContentLength = contentSerialized.Length;
 
-                #endregion Content
+                return httpRequestMessage;
             }
-            catch (Exception ex)
+
+            //Multipart/form-data
+            if (!_formData.IsNullOrEmpty())
             {
-                throw ex;
+                var formDataMultipartFormData = new MultipartFormDataContent();
+
+                foreach (var data in _formData)
+                {
+                    var bytes = data.Item2 as byte[];
+                    if (bytes != null)
+                    {
+                        formDataMultipartFormData.Add(new ByteArrayContent(bytes), data.Item1);
+                    }
+                    else if (data.Item2 is Stream)
+                    {
+                        formDataMultipartFormData.Add(new StreamContent((Stream)data.Item2), data.Item1);
+                    }
+                    else
+                    {
+                        formDataMultipartFormData.Add(new StringContent(data.Item2.ToString()), data.Item1);
+                    }
+                }
+
+                httpRequestMessage.Content = formDataMultipartFormData;
+
+                return httpRequestMessage;
             }
+
+            #endregion Content
+
+            return httpRequestMessage;
         }
 
         #endregion Public Methods

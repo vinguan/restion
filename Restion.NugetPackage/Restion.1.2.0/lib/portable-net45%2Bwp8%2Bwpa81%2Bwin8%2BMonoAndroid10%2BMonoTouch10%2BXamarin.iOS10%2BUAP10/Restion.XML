@@ -1,0 +1,963 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Restion</name>
+    </assembly>
+    <members>
+        <member name="T:Restion.Constants.MediaTypes">
+            <summary>
+            Represents the media types
+            </summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXJavascript">
+            <summary>Used to denote the encoding necessary for files containing JavaScript source code. The alternative MIME type for this file type is text/javascript.</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioL24">
+            <summary>24bit Linear PCM audio at 8-48kHz, 1-N channels; Defined in RFC 3190</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXShockwaveFlash">
+            <summary>Adobe Flash files for example with the extension .swf</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationOctetStream">
+            <summary>Arbitrary binary data.[5] Generally speaking this type identifies files that are not associated with a specific application. Contrary to past assumptions by software packages such as Apache this is not a type that should be applied to unknown files. In such a case, a server or application should not indicate a content type, as it may be incorrect, but rather, should omit the type in order to allow the recipient to guess the type.[6]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationAtomXml">
+            <summary>Atom feeds</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextCss">
+            <summary>Cascading Style Sheets; Defined in RFC 2318</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextCmd">
+            <summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextCsv">
+            <summary>Comma-separated values; Defined in RFC 4180</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXDeb">
+            <summary>deb (file format), a software package format used by the Debian project</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartEncrypted">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartSigned">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MessageHttp">
+            <summary>Defined in RFC 2616</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelExample">
+            <summary>Defined in RFC 4735</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXDvi">
+            <summary>device-independent document in DVI format</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXmlDtd">
+            <summary>DTD files; Defined by RFC 3023</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationJavascript">
+            <summary> ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/ecmascript but with looser processing rules) It is not accepted in IE 8 or earlier - text/javascript is accepted but it is defined as obsolete in RFC 4329. The "type" attribute of the script tag in HTML5 is optional and in practice omitting the media type of JavaScript programs is the most interoperable solution since all browsers have always assumed the correct default even before HTML5 </summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationEcmascript">
+            <summary>ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/javascript but with stricter processing rules)</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationEdifact">
+            <summary>EDI EDIFACT data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationEdiX12">
+            <summary>EDI X12 data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MessagePartial">
+            <summary>Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MessageRfc822">
+            <summary>Email; EML files, MIME files, MHT files, MHTML files; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoXFlv">
+            <summary>Flash video (FLV files)</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImageGif">
+            <summary>GIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextXGwtRpc">
+            <summary>GoogleWebToolkit data</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXGzip">
+            <summary>Gzip</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextHtml">
+            <summary>HTML; Defined in RFC 2854</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImageVndMicrosoftIcon">
+            <summary>ICO image; Registered[9]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelIges">
+            <summary>IGS files, IGES files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MessageImdnXml">
+            <summary>IMDN Instant Message Disposition Notification; Defined in RFC 5438</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationJson">
+            <summary>JavaScript Object Notation JSON; Defined in RFC 4627</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationJsonPatch">
+            <summary>JavaScript Object Notation (JSON) Patch; Defined in RFC 6902</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextJavascript">
+            <summary>JavaScript - Defined in and obsoleted by RFC 4329 in order to discourage its usage in favor of application/javascript. However,text/javascript is allowed in HTML 4 and 5 and, unlike application/javascript, has cross-browser support. The "type" attribute of the script tag in HTML5 is optional and there is no need to use it at all since all browsers have always assumed the correct default (even in HTML 4 where it was required by the specification).</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImagePjpeg">
+            <summary>JPEG JFIF image; Associated with Internet Explorer; Listed in ms775147(v=vs.85) - Progressive JPEG, initiated before global browser support for progressive JPEGs (Microsoft and Firefox).</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImageJpeg">
+            <summary>JPEG JFIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextXJqueryTmpl">
+            <summary>jQuery template data</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndGoogleEarthKmlXml">
+            <summary>KML files (e.g. for Google Earth)</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXLatex">
+            <summary>LaTeX files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoXMatroska">
+            <summary>Matroska open media format</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet">
+            <summary>Microsoft Excel 2007 files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndMsExcel">
+            <summary>Microsoft Excel files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation">
+            <summary>Microsoft Powerpoint 2007 files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndMsPowerpoint">
+            <summary>Microsoft Powerpoint files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument">
+            <summary>Microsoft Word 2007 files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationMsword">
+            <summary>Microsoft Word files[15]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartAlternative">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartMixed">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartRelated">
+            <summary>MIME Email; Defined in RFC 2387 and used by MHTML (HTML mail)</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.MultipartFormData">
+            <summary>MIME Webform; Defined in RFC 2388</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndMozillaXulXml">
+            <summary>Mozilla XUL files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioMpeg">
+            <summary>MP3 or other MPEG audio; Defined in RFC 3003</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioMp4">
+            <summary>MP4 audio</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoMp4">
+            <summary>MP4 video; Defined in RFC 4337</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoMpeg">
+            <summary>MPEG-1 video with multiplexed audio; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelMesh">
+            <summary>MSH files, MESH files; Defined in RFC 2077, SILO files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioBasic">
+            <summary>mulaw audio at 8 kHz, 1 channel; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoOgg">
+            <summary>Ogg Theora or other video (with audio); Defined in RFC 5334</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioOgg">
+            <summary>Ogg Vorbis, Speex, Flac and other audio; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationOgg">
+            <summary>Ogg, a multimedia bitstream container format; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXopXml">
+            <summary>OP</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOasisOpendocumentGraphics">
+            <summary>OpenDocument Graphics; Registered[14]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOasisOpendocumentPresentation">
+            <summary>OpenDocument Presentation; Registered[13]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOasisOpendocumentSpreadsheet">
+            <summary>OpenDocument Spreadsheet; Registered[12]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationVndOasisOpendocumentText">
+            <summary>OpenDocument Text; Registered[11]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXPkcs12">
+            <summary>p12 files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXPkcs7Certificates">
+            <summary>p7b and spc files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXPkcs7Mime">
+            <summary>p7c files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXPkcs7Certreqresp">
+            <summary>p7r files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXPkcs7Signature">
+            <summary>p7s files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationPdf">
+            <summary>Portable Document Format, PDF has been in use for document exchange on the Internet since 1993; Defined in RFC 3778</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImagePng">
+            <summary>Portable Network Graphics; Registered,[8] Defined in RFC 2083</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationPostscript">
+            <summary>PostScript; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoQuicktime">
+            <summary>QuickTime video; Registered[10]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXRarCompressed">
+            <summary>RAR archive files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioVndRnRealaudio">
+            <summary>RealAudio; Documented in RealPlayer Customer Support Answer 2559</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationRdfXml">
+            <summary>Resource Description Framework; Defined by RFC 3870</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationRssXml">
+            <summary>RSS feeds</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationSoapXml">
+            <summary>SOAP; Defined by RFC 3902</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXStuffit">
+            <summary>StuffIt archive files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImageSvgXml">
+            <summary>SVG vector image; Defined in SVG Tiny 1.2 Specification Appendix M</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ImageTiff">
+            <summary>Tag Image File Format (only for Baseline TIFF); Defined in RFC 3302</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXTar">
+            <summary>Tarball files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextPlain">
+            <summary>Textual data; Defined in RFC 2046 and RFC 3676</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXFontTtf">
+            <summary>TrueType Font No registered MIME type, but this is the most commonly used</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.TextVcard">
+            <summary>vCard (contact information); Defined in RFC 6350</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioVorbis">
+            <summary>Vorbis encoded audio; Defined in RFC 5215</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioVndWave">
+            <summary>WAV audio; Defined in RFC 2361</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationFontWoff">
+            <summary>Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoWebm">
+            <summary>WebM Matroska-based open media format</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioWebm">
+            <summary>WebM open media format</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioXMsWax">
+            <summary>Windows Media Audio Redirector; Documented in Microsoft help page</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.AudioXMsWma">
+            <summary>Windows Media Audio; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.VideoXMsWmv">
+            <summary>Windows Media Video; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelVrml">
+            <summary>WRL files, VRML files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelX3DXml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3D XML files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelX3DBinary">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DB binary files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ModelX3DVrml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DV VRML files</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXhtmlXml">
+            <summary>XHTML; Defined by RFC 3236</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationZip">
+            <summary>ZIP archive files; Registered[7]</summary>
+        </member>
+        <member name="F:Restion.Constants.MediaTypes.ApplicationXwwwFormUrlEncoded">
+            <summary></summary>
+        </member>
+        <member name="T:Restion.Deserialization.IDeserialiazer">
+            <summary>
+            Represents the contracts for Deserialization
+            </summary>
+        </member>
+        <member name="P:Restion.Deserialization.IDeserialiazer.RootElement">
+            <summary>
+            Gets or sets the root element for deserialization
+            </summary>
+        </member>
+        <member name="P:Restion.Deserialization.IDeserialiazer.DateFormat">
+            <summary>
+            Gets or sets the date format for deserialization
+            </summary>
+        </member>
+        <member name="M:Restion.Deserialization.IDeserialiazer.DeserializeAsync``1(System.String)">
+            <summary>
+            Deserializes <see cref="!:T"/> asynchronously based on a string value
+            </summary>
+            <typeparam name="T">Type to be deserialized</typeparam>
+            <param name="value">String to deserialize</param>
+            <returns>A instance of <see cref="!:T"/> deserialized</returns>
+        </member>
+        <member name="T:Restion.Deserialization.JsonNetDeserializer">
+            <summary>
+            Represents the Json.NET implementation of <see cref="T:Restion.Deserialization.IDeserialiazer"/> 
+            </summary>
+        </member>
+        <member name="P:Restion.Deserialization.JsonNetDeserializer.RootElement">
+            <summary>
+            Gets or sets the root element for deserialization
+            </summary>
+        </member>
+        <member name="P:Restion.Deserialization.JsonNetDeserializer.DateFormat">
+            <summary>
+            Gets or sets the date format for deserialization
+            </summary>
+        </member>
+        <member name="M:Restion.Deserialization.JsonNetDeserializer.DeserializeAsync``1(System.String)">
+            <summary>
+            Deserializes <see cref="!:T"/> asynchronously using Json.NET based on a string value
+            </summary>
+            <typeparam name="T">Type to be deserialized</typeparam>
+            <param name="value">String to deserialize</param>
+            <returns>A instance of <see cref="!:T"/> deserialized</returns>
+        </member>
+        <member name="T:Restion.Extensions.DictionaryExtensions">
+            <summary>
+            Contains the extensions methods for Dictionary
+            </summary>
+        </member>
+        <member name="M:Restion.Extensions.DictionaryExtensions.ToQueryString(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Transform a dictionary into a query string
+            </summary>
+            <param name="sourceDictionary">The source dictionary</param>
+            <returns>The query string mounted</returns>
+        </member>
+        <member name="T:Restion.CustomHttpMethods">
+            <summary>
+            Represents a set of custom Http Methods that System.Net.Http.HttpMethod
+            </summary>
+        </member>
+        <member name="F:Restion.CustomHttpMethods.Patch">
+            <summary>
+            Gets the PATCH http method
+            </summary>
+        </member>
+        <member name="T:Restion.IRestionClient">
+            <summary>
+            Represents the contracts of a client to send <see cref="T:Restion.IRestionRequest"/>
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClient.Serializer">
+            <summary>
+            Gets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClient.Deserialiazer">
+            <summary>
+            Gets the <see cref="T:Restion.Deserialization.IDeserialiazer"/> implementation for this request
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClient.RestionClientOptions">
+            <summary>
+            Gets the <see cref="P:Restion.IRestionClient.RestionClientOptions"/> 
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClient.HttpClient">
+            <summary>
+            Gets the internal <see cref="P:Restion.IRestionClient.HttpClient"/>
+            </summary>
+        </member>
+        <member name="M:Restion.IRestionClient.SetCookieContainer(System.Net.CookieContainer)">
+            <summary>
+            Sets the <see cref="T:System.Net.CookieContainer"/> 
+            </summary>
+            <param name="cookieContainer">The instance of CookieContainer</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.SetBaseAddress(System.String)">
+            <summary>
+            Sets the base address 
+            </summary>
+            <param name="baseAddress">String with the base address</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.SetSerializer(Restion.Serialization.ISerialiazer)">
+            <summary>
+            Sets the <see cref="T:Restion.Serialization.ISerialiazer"/>
+            </summary>
+            <param name="serialiazer">Implementation of <see cref="T:Restion.Serialization.ISerialiazer"/></param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.SetDeserializer(Restion.Deserialization.IDeserialiazer)">
+            <summary>
+            Sets the <see cref="T:Restion.Deserialization.IDeserialiazer"/>
+            </summary>
+            <param name="deSerialiazer">Implementation of <see cref="T:Restion.Deserialization.IDeserialiazer"/></param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.SetRestionClientOptions(Restion.IRestionClientOptions)">
+            <summary>
+            Sets the <see cref="T:Restion.IRestionClientOptions"/>
+            </summary>
+            <param name="restionClientOptions">The restion client options</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.AddDefaultHeader(System.String,System.String)">
+            <summary>
+            Adds a default heards that will be sent on every request
+            </summary>
+            <param name="headerKey"><see cref="T:System.String"/> with the header key</param>
+            <param name="headerValue"><see cref="T:System.String"/> with the header value</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.SetAuthorizationHeader(System.String,System.String)">
+            <summary>
+            Sets the Authorization header
+            </summary>
+            <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+            <param name="type">The type of the auth header e.g. "Bearer" </param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.IRestionClient.ExecuteRequestAsync``1(Restion.IRestionRequest)">
+            <summary>
+            Execute asynchronously a <see cref="T:Restion.IRestionRequest"/> 
+            </summary>
+            <typeparam name="TResponseContent">Content of the response</typeparam>
+            <param name="restionRequest">The RestionRequest to be sent</param>
+            <returns><see cref="T:Restion.IRestionResponse`1"/> of the request</returns>
+        </member>
+        <member name="T:Restion.IRestionClientOptions">
+            <summary>
+            Represents the contracts for the options for the RestionClient
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClientOptions.AllowRawContent">
+            <summary>
+            Gets or sets a value indicating whether its going to be allowed raw content on the response
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionClientOptions.DateFormat">
+            <summary>
+            Gets or sets the date format to be used in serialization and deserialization
+            </summary>
+        </member>
+        <member name="T:Restion.RestionClient">
+            <summary>
+            Represents the default implementation of <see cref="T:Restion.IRestionRequest"/>
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClient.Serializer">
+            <summary>
+            Gets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClient.Deserialiazer">
+            <summary>
+            Gets the <see cref="T:Restion.Deserialization.IDeserialiazer"/> implementation for this request
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClient.RestionClientOptions">
+            <summary>
+            Gets the <see cref="T:Restion.IRestionClientOptions"/> 
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClient.HttpClient">
+            <summary>
+            Gets the internal <see cref="P:Restion.RestionClient.HttpClient"/>
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClient.DefaultHeaders">
+            <summary>
+            Gets the defaults headers that will be sent on every request
+            </summary>
+        </member>
+        <member name="M:Restion.RestionClient.#ctor">
+            <summary>
+            Default constructor for RestionClient with JsonNet and inicialization of Dictionaries
+            </summary>
+        </member>
+        <member name="M:Restion.RestionClient.#ctor(Restion.Serialization.ISerialiazer,Restion.Deserialization.IDeserialiazer)">
+            <summary>
+            Default constructor for RestionClient
+            </summary>
+            <param name="serializer"></param>
+            <param name="deSerialiazer"></param>
+        </member>
+        <member name="M:Restion.RestionClient.#ctor(System.String)">
+            <summary>
+            Default constructor for RestionClient with JsonNet and inicialization of Dictionaries
+            </summary>
+        </member>
+        <member name="M:Restion.RestionClient.SetCookieContainer(System.Net.CookieContainer)">
+            <summary>
+            Sets the <see cref="T:System.Net.CookieContainer"/> 
+            </summary>
+            <param name="cookieContainer">The instance of CookieContainer</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetBaseAddress(System.String)">
+            <summary>
+            Sets the base address 
+            </summary>
+            <param name="baseAddress">String with the base address</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetSerializer(Restion.Serialization.ISerialiazer)">
+            <summary>
+            Sets the <see cref="T:Restion.Serialization.ISerialiazer"/>
+            </summary>
+            <param name="serialiazer">Implementation of <see cref="T:Restion.Serialization.ISerialiazer"/></param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetDeserializer(Restion.Deserialization.IDeserialiazer)">
+            <summary>
+            Sets the <see cref="T:Restion.Deserialization.IDeserialiazer"/>
+            </summary>
+            <param name="deSerialiazer">Implementation of <see cref="T:Restion.Deserialization.IDeserialiazer"/></param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetRestionClientOptions(Restion.IRestionClientOptions)">
+            <summary>
+            Sets the <see cref="T:Restion.IRestionClientOptions"/>
+            </summary>
+            <param name="restionClientOptions">The restion client options</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.AddDefaultHeader(System.String,System.String)">
+            <summary>
+            Adds a default header that will be sent on every request
+            </summary>
+            <param name="headerKey"><see cref="T:System.String"/> with the header key</param>
+            <param name="headerValue"><see cref="T:System.String"/> with the header value</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.SetAuthorizationHeader(System.String,System.String)">
+            <summary>
+            Sets the Authorization header
+            </summary>
+            <param name="value">The value of the auth header e.g. a Access Token or a full scheme like : "Bearer :ACCESS_TOKEN" </param>
+            <param name="type">The type of the auth header e.g. "Bearer" </param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionClient"/></returns>
+        </member>
+        <member name="M:Restion.RestionClient.ExecuteRequestAsync``1(Restion.IRestionRequest)">
+            <summary>
+            Execute asynchronously a <see cref="T:Restion.IRestionRequest"/> 
+            </summary>
+            <typeparam name="TResponseContent">Content of the response</typeparam>
+            <param name="restionRequest">The RestionRequest to be sent</param>
+            <returns><see cref="T:Restion.IRestionResponse`1"/> of the request</returns>
+        </member>
+        <member name="T:Restion.RestionClientOptions">
+            <summary>
+            Represents the options of the <see cref="T:Restion.IRestionClient"/>
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClientOptions.AllowRawContent">
+            <summary>
+            Gets or sets a value indicating whether its going to be allowed raw content on the response
+            </summary>
+        </member>
+        <member name="P:Restion.RestionClientOptions.DateFormat">
+            <summary>
+            Gets or sets the date format to be used in serialization and deserialization
+            </summary>
+        </member>
+        <member name="M:Restion.RestionClientOptions.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Restion.RestionClientOptions"/>
+            </summary>
+        </member>
+        <member name="T:Restion.IRestionRequest">
+            <summary>
+            Represents the contracts to send a rest request that will be executed by <see cref="T:Restion.IRestionClient"/>
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionRequest.Method">
+            <summary>
+            Gets the HttpMethod for the http request.
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionRequest.BaseUrl">
+            <summary>
+            Gets or sets the base url for the request
+            </summary>
+        </member>
+        <member name="M:Restion.IRestionRequest.WithContent(System.Object)">
+            <summary>
+            Sets the content of the request
+            </summary>
+            <param name="content">The content of the request</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.WithContentEnconding(System.Text.Encoding)">
+            <summary>
+            Sets the enconding of the request
+            </summary>
+            <param name="encoding"><see cref="T:System.Text.Encoding"/> of the request</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.WithContentMediaType(System.String)">
+            <summary>
+            Sets the media type of the request
+            </summary>
+            <param name="mediaType">String with the media type</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.WithHttpMethod(System.Net.Http.HttpMethod)">
+            <summary>
+            Sets the <see cref="T:System.Net.Http.HttpMethod"/> of the request
+            </summary>
+            <param name="method">An instance of<see cref="T:System.Net.Http.HttpMethod"/></param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.AddParameter(System.String,System.String)">
+            <summary>
+            Adds a parameter to the url of the request
+            </summary>
+            <param name="parameterKey">String with the parameter name</param>
+            <param name="parameterValue">String with the parameter value</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.AddHeader(System.String,System.String)">
+            <summary>
+            Adds a header ont the request
+            </summary>
+            <param name="headerKey">String with the header name</param>
+            <param name="headerValue">String with the header value</param>
+            <returns>An instance of a concrete implementation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.AddFormUrl(System.String,System.String)">
+            <summary>
+            Adds a header ont the request
+            </summary>
+            <param name="formUrlKey">String with the header name</param>
+            <param name="formUrlValue">String with the header value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.AddFormData(System.String,System.Object)">
+            <summary>
+            Adds a header ont the request
+            </summary>
+            <param name="formDataKey">String with the header name</param>
+            <param name="formDataValue">String with the header value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.IRestionRequest.BuildHttpRequestMessageAsync">
+            <summary>
+            Builds asynchronously a <see cref="T:System.Net.Http.HttpRequestMessage"/> based on this <see cref="T:Restion.IRestionRequest"/>
+            </summary>
+            <returns>The <see cref="T:System.Net.Http.HttpRequestMessage"/> built</returns>
+        </member>
+        <member name="T:Restion.RestionRequest">
+            <summary>
+            Represents a default the implementation of <see cref="T:Restion.IRestionClient"/> 
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._content">
+            <summary>
+            Content of the request
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._parameters">
+            <summary>
+            Dictionary of parameters
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._formUrlEncoded">
+            <summary>
+            Dictionary of form url encoded
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._formData">
+            <summary>
+            Dictionary of form url encoded
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._headers">
+            <summary>
+            Dictionary of headers
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._url">
+            <summary>
+            Url of the request
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._encoding">
+            <summary>
+            Enconding of the request
+            </summary>
+        </member>
+        <member name="F:Restion.RestionRequest._mediaType">
+            <summary>
+            Media-Type for the request
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.Method">
+            <summary>
+            Gets the HttpMethod for the http request.
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.BaseUrl">
+            <summary>
+            Gets or sets the base url for the request
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.Parameters">
+            <summary>
+            Gets the parameters
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.Headers">
+            <summary>
+            Gets the headers
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.FormUrlEncoded">
+            <summary>
+            Dictionary of form url encoded parameters
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.FormData">
+            <summary>
+            Dictionary of form data
+            </summary>
+        </member>
+        <member name="P:Restion.RestionRequest.Serialiazer">
+            <summary>
+            Gets or sets the <see cref="T:Restion.Serialization.ISerialiazer"/> implementation for this request
+            </summary>
+        </member>
+        <member name="M:Restion.RestionRequest.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Restion.RestionRequest"/> class
+            </summary>
+        </member>
+        <member name="M:Restion.RestionRequest.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Restion.RestionRequest"/> class using a base url
+            </summary>
+            <param name="url">Base url of the request</param>
+        </member>
+        <member name="M:Restion.RestionRequest.WithContent(System.Object)">
+            <summary>
+            Sets the content of the request
+            </summary>
+            <param name="content">The content of the request</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.WithContentEnconding(System.Text.Encoding)">
+            <summary>
+            Sets the enconding of the request
+            </summary>
+            <param name="encoding"><see cref="T:System.Text.Encoding"/> of the request</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.WithContentMediaType(System.String)">
+            <summary>
+            Sets the media type of the request
+            </summary>
+            <param name="mediaType">String with the media type</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.AddParameter(System.String,System.String)">
+            <summary>
+            Adds a parameter to the url of the request
+            </summary>
+            <param name="parameterKey">String with the parameter name</param>
+            <param name="parameterValue">String with the parameter value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.AddHeader(System.String,System.String)">
+            <summary>
+            Adds a header in the request
+            </summary>
+            <param name="headerKey">String with the header name</param>
+            <param name="headerValue">String with the header value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.AddFormUrl(System.String,System.String)">
+            <summary>
+            Adds a form url enconded into the request
+            </summary>
+            <param name="formUrlKey">String with the form url key</param>
+            <param name="formUrlValue">String with the  form url value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.AddFormData(System.String,System.Object)">
+            <summary>
+            Adds a form data into the request
+            </summary>
+            <param name="formDataKey">String with the form data key</param>
+            <param name="formDataValue">String with the form data value</param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.WithHttpMethod(System.Net.Http.HttpMethod)">
+            <summary>
+            Sets the <see cref="T:System.Net.Http.HttpMethod"/> of the request
+            </summary>
+            <param name="method">An instance of<see cref="T:System.Net.Http.HttpMethod"/></param>
+            <returns>An instance of a concrete implmentation of <see cref="T:Restion.IRestionRequest"/></returns>
+        </member>
+        <member name="M:Restion.RestionRequest.BuildHttpRequestMessageAsync">
+            <summary>
+            Builds asynchronously a <see cref="T:System.Net.Http.HttpRequestMessage"/> based on this <see cref="T:Restion.IRestionRequest"/>
+            </summary>
+            <returns>The <see cref="T:System.Net.Http.HttpRequestMessage"/> built</returns>
+        </member>
+        <member name="M:Restion.RestionRequest.Dispose">
+            <summary>
+            Disposes the <see cref="T:Restion.RestionRequest"/>
+            </summary>
+        </member>
+        <member name="M:Restion.RestionRequest.Dispose(System.Boolean)">
+            <summary>
+            Dispose for derived classes
+            </summary>
+            <param name="disposing">If it is disposing</param>
+        </member>
+        <member name="T:Restion.IRestionResponse`1">
+            <summary>
+            Represents the contracts for a response of a <see cref="T:Restion.IRestionRequest"/>
+            </summary>
+            <typeparam name="TContent">Type of the content of the response</typeparam>
+        </member>
+        <member name="P:Restion.IRestionResponse`1.Content">
+            <summary>
+            Gets or sets the <see cref="!:TContent"/> instance of the response
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionResponse`1.RawContent">
+            <summary>
+            Get the raw content of the response if allowed through the <see cref="T:Restion.RestionClientOptions"/>
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionResponse`1.HttpStatusCode">
+            <summary>
+            Gets the HttpStatusCode of the response
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionResponse`1.HttpResponseMessage">
+            <summary>
+            Gets or sets the HttpResponseMessage of the response
+            </summary>
+        </member>
+        <member name="P:Restion.IRestionResponse`1.Exception">
+            <summary>
+            Gets or sets the exception of the response
+            </summary>
+        </member>
+        <member name="T:Restion.RestionResponse`1">
+            <summary>
+            Default implementation of <see cref="T:Restion.IRestionResponse`1"/>
+            </summary>
+            <typeparam name="TContent"></typeparam>
+        </member>
+        <member name="P:Restion.RestionResponse`1.Content">
+            <summary>
+            Gets or sets the <see cref="!:TContent"/> instance of the response
+            </summary>
+        </member>
+        <member name="P:Restion.RestionResponse`1.RawContent">
+            <summary>
+            Get the raw content of the response if allowed through the <see cref="T:Restion.RestionClientOptions"/>
+            </summary>
+        </member>
+        <member name="P:Restion.RestionResponse`1.HttpStatusCode">
+            <summary>
+            Gets the HttpStatusCode of the response
+            </summary>
+        </member>
+        <member name="P:Restion.RestionResponse`1.HttpResponseMessage">
+            <summary>
+            Gets or sets the HttpResponseMessage of the response
+            </summary>
+        </member>
+        <member name="P:Restion.RestionResponse`1.Exception">
+            <summary>
+            Gets or sets the exception of the response
+            </summary>
+        </member>
+        <member name="T:Restion.Serialization.ISerialiazer">
+            <summary>
+            Represents the contracts for Deserialization
+            </summary>
+        </member>
+        <member name="P:Restion.Serialization.ISerialiazer.RootElement">
+            <summary>
+            Gets or sets the root element for serialization
+            </summary>
+        </member>
+        <member name="P:Restion.Serialization.ISerialiazer.DateFormat">
+            <summary>
+            Gets or sets the date format for deserialization
+            </summary>
+        </member>
+        <member name="M:Restion.Serialization.ISerialiazer.SerializeAsync``1(``0)">
+            <summary>
+            Serializes <see cref="!:T"/> asynchronously based on a string value
+            </summary>
+            <typeparam name="T">The type to be Serialized</typeparam>
+            <param name="obj">Instance of the <see cref="!:T"/></param>
+            <returns>The <see cref="!:T"/> serialized into a string</returns>
+        </member>
+        <member name="T:Restion.Serialization.JsonNetSerializer">
+            <summary>
+            Represents the Json.NET implementation of <see cref="T:Restion.Serialization.ISerialiazer"/> 
+            </summary>
+        </member>
+        <member name="P:Restion.Serialization.JsonNetSerializer.RootElement">
+            <summary>
+            Gets or sets the root element for serialization
+            </summary>
+        </member>
+        <member name="P:Restion.Serialization.JsonNetSerializer.DateFormat">
+            <summary>
+            Gets or sets the date format for deserialization
+            </summary>
+        </member>
+        <member name="M:Restion.Serialization.JsonNetSerializer.SerializeAsync``1(``0)">
+            <summary>
+            Serializes using Json.NET asynchronously based on a string value
+            </summary>
+            <typeparam name="T">The type to be Serialized</typeparam>
+            <param name="obj">Instance of the object</param>
+            <returns>The object serialized into a string</returns>
+        </member>
+    </members>
+</doc>

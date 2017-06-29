@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion", "Restion\Restion.csproj", "{46B36843-A335-4B50-8C44-19AC821FDD20}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion.Tests", "Restion.Tests\Restion.Tests.csproj", "{828130B8-5737-456D-A87B-B374C7700D82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion.Tests.WebApi", "Restion.Tests.WebApi\Restion.Tests.WebApi.csproj", "{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}"
@@ -12,10 +10,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Tests", "1 - Tests", "{BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Nuget", "2 - Nuget", "{09C8B6BE-2B7E-4429-9288-8D36E7BFAB53}"
+	ProjectSection(SolutionItems) = preProject
+		Restion.NugetPackage\Restion.nuspec = Restion.NugetPackage\Restion.nuspec
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{689501E6-A9C8-4D4C-834B-43623E15158E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restion.NugetPackage", "Restion.NugetPackage\Restion.NugetPackage.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Logo", "3 - Logo", "{8E08950F-36FA-47AE-BC3A-D568A9AEDCB6}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,16 +23,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Logo", "3 - Logo", "{8E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Source", "0 - Source", "{EB408661-F2E4-47B6-A3D1-220BA539EFE3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restion", "Restion\Restion.csproj", "{1199D064-4E84-4267-B095-E26E5A3B62EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46B36843-A335-4B50-8C44-19AC821FDD20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46B36843-A335-4B50-8C44-19AC821FDD20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46B36843-A335-4B50-8C44-19AC821FDD20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46B36843-A335-4B50-8C44-19AC821FDD20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{828130B8-5737-456D-A87B-B374C7700D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{828130B8-5737-456D-A87B-B374C7700D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828130B8-5737-456D-A87B-B374C7700D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,18 +39,17 @@ Global
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1199D064-4E84-4267-B095-E26E5A3B62EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1199D064-4E84-4267-B095-E26E5A3B62EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1199D064-4E84-4267-B095-E26E5A3B62EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1199D064-4E84-4267-B095-E26E5A3B62EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{46B36843-A335-4B50-8C44-19AC821FDD20} = {EB408661-F2E4-47B6-A3D1-220BA539EFE3}
 		{828130B8-5737-456D-A87B-B374C7700D82} = {BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}
 		{925C9440-6775-4AB6-A3D4-7A7305D7BFD4} = {BECC9EB0-59D2-4022-ADBD-B04BA52A8AAD}
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {09C8B6BE-2B7E-4429-9288-8D36E7BFAB53}
+		{1199D064-4E84-4267-B095-E26E5A3B62EB} = {EB408661-F2E4-47B6-A3D1-220BA539EFE3}
 	EndGlobalSection
 EndGlobal

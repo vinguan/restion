@@ -18,11 +18,6 @@ namespace Restion
         HttpMethod Method { get; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ISerialiazer"/> implementation for this request
-        /// </summary>
-        ISerialiazer Serialiazer { get; set;}
-
-        /// <summary>
         /// Gets or sets the base url for the request
         /// </summary>
         string BaseUrl { get; set; }
@@ -93,7 +88,7 @@ namespace Restion
         /// Builds asynchronously a <see cref="HttpRequestMessage"/> based on this <see cref="IRestionRequest"/>
         /// </summary>
         /// <returns>The <see cref="HttpRequestMessage"/> built</returns>
-        Task<HttpRequestMessage> GetHttpRequestMessageAsync();
+        Task<HttpRequestMessage> BuildHttpRequestMessageAsync();
         #endregion Methods
     }
 }
