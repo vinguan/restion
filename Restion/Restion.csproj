@@ -1,115 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{46B36843-A335-4B50-8C44-19AC821FDD20}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Restion</RootNamespace>
-    <AssemblyName>Restion</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Description>Fluent Class Library(FCL) for calling RESTful services in .NET</Description>
+    <PackageReleaseNotes>[1.3.0]
+         [New-Features]  
+          ---Support for .NET Standard
+        [1.2.0]
+       [Bug-Fixes]
+        -Fixed serializing content even if it is null or not set
+        -Added default enconding(UTF-8).
+        [Api-Changes]
+        -FormUrl, FormData and ISerializer on IRestionRequest properties are not public accesible anymore. The fluent interface apis for them are the same.
+        -Added Json.NET minimum dependency to 10.0.2
+      [1.1.0]
+         [New-Features]
+           -Added SetAuthorizationHeader on RestionClient to use as a shortcut for default auth header that should be sent on every request
+      [1.0.0]
+      ---Initial stable release
+      [1.0.0-rc2]
+         [New-Features]
+           -Added FormUrlEncoded and MultiPartFormData support - check github page
+           -Added IRestionClientOptions in other the place of the concrete RestionClientOptions
+           -Added ASPNETCORE5 and UAP10 plataforms targets
+           -Removed Silverlight support because PCL profile with UAP10 and ASPNET5 does not support. (Who stil uses Silverlight anyway?)
+         [Bug-Fixes]
+           -Fixed a bug on building a query string from parameters dictionary
+           -Fixed a typo in RestionClient : SetDeSerializer to SetDeserializer
+</PackageReleaseNotes>
+    <PackageId>Restion</PackageId>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>1.3.0</Version>
+    <Authors>Vinicius Gualberto - @vinguan</Authors>
+    <Company>Vinicius Gualberto - @vinguan</Company>
+    <Copyright>Copyright  2017</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/vinguan/restion</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/vinguan/restion/master/restion-logo.png</PackageIconUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Restion.XML</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>2</WarningLevel>
+    <DocumentationFile>bin\Release\netstandard1.2\Restion.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Restion.XML</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Constants\MediaTypes.cs" />
-    <Compile Include="Deserialization\IDeserialiazer.cs" />
-    <Compile Include="Extensions\ByteArrayExtensions.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="HttpMethods\CustomHttpMethods.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestionClient\IRestionClient.cs" />
-    <Compile Include="RestionClient\IRestionClientOptions.cs" />
-    <Compile Include="RestionClient\RestionClient.cs" />
-    <Compile Include="RestionClient\RestionClientOptions.cs" />
-    <Compile Include="RestionRequest\IRestionRequest.cs" />
-    <Compile Include="RestionRequest\RestionRequest.cs" />
-    <Compile Include="RestionResponse\IRestionResponse.cs" />
-    <Compile Include="RestionResponse\RestionResponse.cs" />
-    <Compile Include="Serialization\ISerialiazer.cs" />
-    <Compile Include="Deserialization\JsonNetDeserializer.cs" />
-    <Compile Include="Serialization\JsonNetSerializer.cs" />
+    <Compile Remove="Deserialization\XmlDeserializer.cs" />
+    <Compile Remove="Serialization\XmlSerializer.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.2" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wp8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wp8+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-    -->
-  <!--<Target Name="AfterBuild">
-    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-      <Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
-    </GetAssemblyIdentity>
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(ProjectDir)Releases\%(AssemblyVersion.Version)\$(TargetName).dll" />
-  </Target>-->
+
 </Project>

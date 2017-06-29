@@ -2,12 +2,12 @@
 <package >
   <metadata>
     <id>Restion</id>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <title>Restion</title>
     <authors>Vinicius Gualberto - @vinguan</authors>
     <owners>Vinicius Gualberto - @vinguan</owners>
     <description>
-      An unifier of kingdoms Fluent Class Library(FCL) for calling RESTful services in .NET
+      Fluent Class Library(FCL) for calling RESTful services in .NET
     </description>
     <releaseNotes>
       [1.2.0]
@@ -33,7 +33,6 @@
            -Fixed a typo in RestionClient : SetDeSerializer to SetDeserializer
     </releaseNotes>
     <summary>
-      An unifier of kingdoms portable class library for calling RESTful services in .NET
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/vinguan/restion</projectUrl>
