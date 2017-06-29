@@ -4,12 +4,12 @@
 <img src="https://raw.githubusercontent.com/vinguan/restion/master/restion-logo.png" width="200">
 
 I like to call it an unifier of kingdoms portable class library for calling RESTful services in .NET. 
-It unifies the fluent interface kingdom with HttpClient and make http request from PCL a lot more easier.
+It unifies the fluent interface kingdom with HttpClient and make http requests a lot more easier.
 
-##Compability
-Compiled to Profile 259 of PCL which includes the plataforms .NET 4.5, Windows Phone 8.x, Windows 8.x, Windows 10 UWP. It can be used also on iOS and Android with [Xamarin](http://xamarin.com).
+## Compability
+.Net Standard 1.1 or superior
 
-#Nuget
+# Nuget
 ```
 Install-Package Restion
 ```
