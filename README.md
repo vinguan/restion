@@ -6,7 +6,7 @@
 I like to call it an unifier of kingdoms portable class library for calling RESTful services in .NET. 
 It unifies the fluent interface kingdom with HttpClient and make http requests a lot more easier.
 
-## Compability
+# Compability
 .Net Standard 1.1 or superior
 
 # Nuget
