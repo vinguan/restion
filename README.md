@@ -3,8 +3,7 @@
 
 <img src="https://raw.githubusercontent.com/vinguan/restion/master/restion-logo.png" width="200">
 
-I like to call it an unifier of kingdoms portable class library for calling RESTful services in .NET. 
-It unifies the fluent interface kingdom with HttpClient and make http requests a lot more easier.
+Fluent Class Library(FCL) for calling RESTful services in .NET
 
 # Compability
 .Net Standard 1.1 or superior
