@@ -4,37 +4,13 @@
     <TargetFramework>netstandard1.1</TargetFramework>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Description>Fluent Class Library(FCL) for calling RESTful services in .NET</Description>
-    <PackageReleaseNotes>[1.3.0]
-         [New-Features]  
-          ---Support for .NET Standard
-        [1.2.0]
-       [Bug-Fixes]
-        -Fixed serializing content even if it is null or not set
-        -Added default enconding(UTF-8).
-        [Api-Changes]
-        -FormUrl, FormData and ISerializer on IRestionRequest properties are not public accesible anymore. The fluent interface apis for them are the same.
-        -Added Json.NET minimum dependency to 10.0.2
-      [1.1.0]
-         [New-Features]
-           -Added SetAuthorizationHeader on RestionClient to use as a shortcut for default auth header that should be sent on every request
-      [1.0.0]
-      ---Initial stable release
-      [1.0.0-rc2]
-         [New-Features]
-           -Added FormUrlEncoded and MultiPartFormData support - check github page
-           -Added IRestionClientOptions in other the place of the concrete RestionClientOptions
-           -Added ASPNETCORE5 and UAP10 plataforms targets
-           -Removed Silverlight support because PCL profile with UAP10 and ASPNET5 does not support. (Who stil uses Silverlight anyway?)
-         [Bug-Fixes]
-           -Fixed a bug on building a query string from parameters dictionary
-           -Fixed a typo in RestionClient : SetDeSerializer to SetDeserializer
-</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix for DictionaryExtensions.ToQueryString when the dictionary is null or empty</PackageReleaseNotes>
     <PackageId>Restion</PackageId>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <Authors>Vinicius Gualberto - @vinguan</Authors>
     <Company>Vinicius Gualberto - @vinguan</Company>
-    <Copyright>Copyright  2017</Copyright>
+    <Copyright>2019</Copyright>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/vinguan/restion</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/vinguan/restion/master/restion-logo.png</PackageIconUrl>
