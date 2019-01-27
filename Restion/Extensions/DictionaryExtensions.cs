@@ -15,6 +15,9 @@ namespace Restion.Extensions
         /// <returns>The query string mounted</returns>
         public static string ToQueryString(this IDictionary<string, string> sourceDictionary)
         {
+            if (sourceDictionary == null || sourceDictionary.Count == 0)
+                return string.Empty;
+
             var list = sourceDictionary.Select(item => item.Key + "=" + item.Value).ToList();
 
             return "?" + string.Join("&", list);
